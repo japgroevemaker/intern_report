@@ -11,7 +11,7 @@ router.get('/:title', async function(req, res){
 })
 
 async function loadPages(){
-  const client = await mongodb.MongoClient.connect('mongodb+srv://japgroevemaker:P5pwv9VV@intern-6gs0a.azure.mongodb.net/intern_report?retryWrites=true&w=majority', {
+  const client = await mongodb.MongoClient.connect('YOUR DB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
