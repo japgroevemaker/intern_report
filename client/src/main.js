@@ -19,8 +19,6 @@ const router = new VueRouter({
     //   name: 'helloworld',
     //   component: HelloWorld
     // }
-
-
   ]
 })
 
