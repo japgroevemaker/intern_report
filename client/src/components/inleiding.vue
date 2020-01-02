@@ -10,7 +10,7 @@
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
     body {
         background-color: $pink-color;
     }
