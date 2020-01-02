@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-10 mx-auto">
-                <p class="-caption">
-                    {{caption}}
+            <div class="col-10 text-center mx-auto">
+                <p class="-caption text-left mb-5">
+                    {{text}}
                 </p>
                 <!-- <a class="read-more" href="/pages"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </a> -->
-                <router-link :to="{ name: 'inleiding', params: { title: 'inleiding'}}"> <span class="read-more"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
+                <router-link :to="{ name: 'inleiding', params: { title: 'inleiding'}}"> <span class="read-more text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
             </div>
         </div>
     </div>
@@ -20,13 +20,15 @@ export default {
         return {    
             title: '',
             pages: [],
+            chapters: [],
             readMore: 'Lees hele inleiding',
-            caption: '',
+            text: '',
             error: ''
         }
     },
    async created() {
         this.fetchPageData('home');
+        this.fetchChapterData();
         // const id = this.$route.params.id
         // try {
         //     this.pages = await PageService.all()
@@ -41,15 +43,24 @@ export default {
     },
     methods: {
         fetchPageData(pageId) {
-            PageService.all(pageId)
+            PageService.getPages(pageId)
                 .then(response => {
                     this.title = response.data[0].title
                     this.pages = response.data
-                    this.caption = response.data[0].caption
+                    this.text = response.data[0].text
                 }).catch(error => {
                     this.message = error
                 })
-        }
+        },
+
+        fetchChapterData() {
+            PageService.getAllChapters()
+                .then(response => {
+                    this.chapters = response.data
+                }).catch(error => {
+                    this.message = error
+                })
+        },
     },
 }
 </script>
@@ -64,5 +75,6 @@ export default {
     .read-more {
         color: $pink-color;
         font-weight: $fw-bold;
+        margin: auto;
     }
 </style>

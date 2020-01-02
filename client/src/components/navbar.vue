@@ -28,8 +28,14 @@
                         <div class="col-8 ml-3">
                             <ul class="pl-0">
                                 <li class="contact-item" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
-                                <div class="clearfix mt-2"></div>
-                                
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row contact-items mt-2">
+                        <div class="col-8 ml-3">
+                            <ul class="pl-0">
+                                <li class="contact-item" v-for="(contactItemDown, index) in contactItemsDown" :key="index">{{contactItemDown}}</li>
                             </ul>
                         </div>
                     </div>
