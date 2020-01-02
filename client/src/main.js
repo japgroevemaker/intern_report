@@ -1,24 +1,29 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import Template from './components/Template.vue'
+
+//routes
+import Home from './components/home.vue';
+import Inleiding from './components/inleiding.vue';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
-  base: '/pages',
+  base: '/',
   routes : [
     {
-      path: '/:title',
+      path: '',
       name: 'home',
-      component: Template
+      component: Home,
+      // alias: '/home'
     },
-    // {
-    //   path: '/',
-    //   name: 'helloworld',
-    //   component: HelloWorld
-    // }
+    {
+      path: '/pages/:title',
+      name: 'inleiding',
+      component: Inleiding,
+      // // alias: '/inleiding'
+    }
   ]
 })
 
