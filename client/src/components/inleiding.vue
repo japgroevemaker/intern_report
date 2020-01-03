@@ -39,14 +39,15 @@ export default {
     },
     methods: {
         fetchPageData(pageId) {
-            PageService.all(pageId)
+            PageService.getPages(pageId)
                 .then(response => {
+                    this.title = response.data[0].title
                     this.pages = response.data
                     this.text = response.data[0].text
                 }).catch(error => {
                     this.message = error
                 })
-        }
+        },
     },
 }
 </script>

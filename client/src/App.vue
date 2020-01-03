@@ -4,12 +4,12 @@
     <div class="container mt-5">
       <router-view/>
     </div>
-
   </div>
 </template>
 
 <script>
 import navBar from './components/navbar.vue'
+
 
 export default {
   name: 'app',

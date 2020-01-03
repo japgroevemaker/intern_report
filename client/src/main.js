@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 //routes
 import Home from './components/home.vue';
 import Inleiding from './components/inleiding.vue';
+import ChapterComp from './components/chapter.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,11 @@ const router = new VueRouter({
       name: 'inleiding',
       component: Inleiding,
       // // alias: '/inleiding'
+    },
+    {
+      path: '/chapter/:title',
+      name: 'chapter',
+      component: ChapterComp
     }
   ]
 })
