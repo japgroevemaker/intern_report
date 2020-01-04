@@ -13,7 +13,7 @@
         <div class="clearfix my-5"></div>
 
         <keep-alive>
-            <tiny-slider ref="tinySlider" :mouse-drag="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="30" gutter="15" :auto-init="false">
+            <tiny-slider ref="tinySlider" :center="true" :mouse-drag="true" :touch="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="40" gutter="20" :auto-init="false">
                 <div v-for="(chapter, index) in chapters" :key="index">
                     <router-link :to="{name: 'chapter', params: { title: chapter.title } }">
                     <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
@@ -58,7 +58,7 @@ export default {
 
     async created() {
         this.fetchPageData('home');
-        this.rebuildSlider()
+        // this.rebuildSlider()
     },
 
     methods: {
@@ -81,10 +81,10 @@ export default {
             return slider.init()
         },
 
-        rebuildSlider(){
-             const slider = this.$refs.tinySlider;
-            return slider.rebuild()
-        }
+        // rebuildSlider(){
+        //      const slider = this.$refs.tinySlider;
+        //     return slider.rebuild()
+        // }
     }
 }
 </script>
@@ -94,6 +94,7 @@ export default {
 
     .tns-outer {
         margin-right: -15px;
+        margin-left: -15px;
     }
 
     .tns-nav {
