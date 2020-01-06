@@ -21,8 +21,9 @@
             </div>
 
             <div class="col-10 mx-auto mt-5">
-                <p class="text">
-                    {{textOne}}
+                <h3 class="text-heading" v-if="text[0]">{{text[0].heading}}</h3>
+                <p v-if="text[0]" class="text">
+                    {{text[0].text}}
                 </p>
             </div>            
         </div>
@@ -36,11 +37,13 @@
 
         <div class="row">
             <div class="col-10 mx-auto mt-2 mb-5">
-                <p class="text">
-                    {{textTwo}}
+                <h3 class="text-heading mb-n1" v-if="text[1]">{{text[1].heading}}</h3>
+                <p v-if="text[1]" class="text">
+                    {{text[1].text}}
                 </p>
             </div>
         </div>
+        
 
         <div class="row">
             <div class="col-10 d-flex justify-content-between mx-auto">
@@ -67,8 +70,7 @@ export default {
             titleCaption: '',
             title: '',
             caption: '',
-            textOne: '',
-            textTwo: '',
+            text: [],
             images: null,
             nextLink: '',
             prevLink: '',
@@ -97,8 +99,7 @@ export default {
                     this.titleCaption = response.data[0].titleCaption
                     this.title = response.data[0].title
                     this.caption = response.data[0].caption
-                    this.textOne = response.data[0].textOne
-                    this.textTwo = response.data[0].textTwo
+                    this.text = response.data[0].text
                     this.nextLink = response.data[0].next
                     this.prevLink = response.data[0].back
 
@@ -144,6 +145,12 @@ export default {
         font-weight: $fw-bold;
         font-size: 18px;
         line-height: $line-height;
+    }
+
+    .text-heading {
+        color: $pink-color;
+        font-size: 18px;
+        font-weight: $fw-bold;
     }
 
     .text {
