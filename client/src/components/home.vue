@@ -13,7 +13,7 @@
         <div class="clearfix my-5"></div>
 
         <keep-alive>
-            <tiny-slider ref="tinySlider" :center="true" :mouse-drag="true" :touch="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="40" gutter="20" :auto-init="false">
+            <tiny-slider ref="tinySlider" v-if="chapters" :center="true" :mouse-drag="true" :touch="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="40" gutter="20">
                 <div v-for="(chapter, index) in chapters" :key="index">
                     <router-link :to="{name: 'chapter', params: { title: chapter.title } }">
                     <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
@@ -45,7 +45,7 @@ export default {
         return {    
             title: '',
             pages: [],
-            chapters: [],
+            chapters: null,
             readMore: 'Lees hele inleiding',
             toChapter: 'naar hoofdstuk',
             text: '',
@@ -74,57 +74,11 @@ export default {
                 })
         },
     },
-
-    computed: {
-        startSlider(){
-            const slider = this.$refs.tinySlider;
-            return slider.init()
-        },
-
-        // rebuildSlider(){
-        //      const slider = this.$refs.tinySlider;
-        //     return slider.rebuild()
-        // }
-    }
 }
 </script>
 
 <style lang="scss">
     @import 'tiny-slider/src/tiny-slider';
-
-    .tns-outer {
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-
-    .tns-nav {
-        margin: 20px auto;
-        width: 30%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-
-        .tns-nav-active {
-            background-color: #2C2C2E;
-            width: 14px;
-            height: 14px;
-            transition: all .2s ease-in;
-        }
-
-        button {
-            border: none;
-            width: 12px;
-            height: 12px;
-            background-color: #1C1C1E;
-            border-radius: 50%;
-            transition: all .2s ease-in;
-        }
-
-        button:focus {
-            outline: none;
-        }
-    }
 
     .-caption {
         color: #fff;

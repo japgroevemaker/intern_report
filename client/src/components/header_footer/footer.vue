@@ -18,7 +18,7 @@
                             
                                 <a v-for="(link, index) in links" :key="index" :href="link.link">
                                     <div class="circle">
-                                        <img :src="'./static/footer/'+ link.image" alt="">
+                                        <img :src="'/static/footer/'+ link.image" alt="">
                                     </div>
                                 </a>
                             
