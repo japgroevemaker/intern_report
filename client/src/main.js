@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import Home from './components/home.vue';
 import Inleiding from './components/inleiding.vue';
 import ChapterComp from './components/chapter.vue';
+import ProjectComp from './components/project.vue';
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const router = new VueRouter({
       path: '/chapter/:title',
       name: 'chapter',
       component: ChapterComp
+    },
+    {
+      path: '/project/:title',
+      name: 'project',
+      component: ProjectComp
     }
   ]
 })

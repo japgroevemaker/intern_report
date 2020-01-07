@@ -14,9 +14,11 @@ app.use(cors({
 
 const Pages = require('./router/api/Pages')
 const Chapters = require('./router/api/Chapters')
+const Projects = require('./router/api/Project')
 
 app.use('/api/pages', cors(), Pages)
 app.use('/api/chapters', cors(), Chapters)
+app.use('/api/projects', cors(), Projects)
 
 app.listen(3000, function() {
     console.log('Running on port 3000')

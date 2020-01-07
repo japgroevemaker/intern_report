@@ -12,8 +12,8 @@
         
         <div class="clearfix my-5"></div>
 
-        <keep-alive>
-            <tiny-slider ref="tinySlider" v-if="chapters" :center="true" :mouse-drag="true" :touch="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="40" gutter="20">
+        
+            <tiny-slider ref="tinySlider" v-if="chapters" :touch="true" :lazyload="true" :center="true" :mouse-drag="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="40" gutter="20">
                 <div v-for="(chapter, index) in chapters" :key="index">
                     <router-link :to="{name: 'chapter', params: { title: chapter.title } }">
                     <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
@@ -30,7 +30,7 @@
                     </router-link>
                 </div>
             </tiny-slider>
-        </keep-alive>
+       
 
         <div class="clearfix my-5 "></div>
     </div>
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss">
-    @import 'tiny-slider/src/tiny-slider';
+    // @import 'tiny-slider/src/tiny-slider';
 
     .-caption {
         color: #fff;
