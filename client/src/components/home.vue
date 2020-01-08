@@ -13,7 +13,7 @@
         <div class="clearfix my-5"></div>
 
         
-            <tiny-slider ref="tinySlider" v-if="chapters" :touch="true" :lazyload="true" :center="true" :mouse-drag="true" :loop="false" navPosition="bottom" :controls="false" items="1.5" edge-padding="40" gutter="20">
+            <tiny-slider ref="tinySlider" v-if="chapters" v-bind="sliderConfig">
                 <div v-for="(chapter, index) in chapters" :key="index">
                     <router-link :to="{name: 'chapter', params: { title: chapter.title } }">
                     <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
@@ -60,6 +60,22 @@ export default {
         this.fetchPageData('home');
         // this.rebuildSlider()
     },
+
+     mounted() {
+        this.sliderConfig = {
+            center: true,
+            mouseDrag: true,
+            touch: true,
+            loop: false,
+            navPosition: 'bottom',
+            controls: false,
+            swipeAngle: 45,
+            items: 1.5,
+            gutter: 20,
+            edgePadding: 40
+        }
+    },
+
 
     methods: {
         fetchPageData(pageId) {

@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+
   body {
     background-color: $black-color;
     font-family: 'Open Sans', sans-serif;
