@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <navBar/>
-    <div class="container mt-5">
-      <router-view :key="$route.params.title"/>
-    </div>
+    
+      <vue-page-transition name="overlay-right-full">
+        <router-view :key="$route.params.title"/>
+      </vue-page-transition>
+     
+    
     <Footer/>
   </div>
 </template>
@@ -18,22 +21,27 @@ export default {
   components: {
     navBar,
     Footer
-  }
+  },
 }
 </script>
 
 <style lang="scss">
 
+  .overlay-top,.overlay-right,.overlay-left,.overlay-bottom {
+    background: $pink-color;
+    transition-duration: .2s !important;
+    z-index: 1000 !important;
+  }
 
   body {
     background-color: $black-color;
     font-family: 'Open Sans', sans-serif;
   }
 
-   .tns-outer {
-        margin-right: -15px;
-        margin-left: -15px;
-    }
+  //  .tns-outer {
+  //       margin-right: -15px;
+  //       margin-left: -15px;
+  //   }
 
     .tns-nav {
         margin: 20px auto;

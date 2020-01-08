@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import VuePageTransition from 'vue-page-transition'
 
 //routes
 import Home from './components/home.vue';
@@ -8,6 +9,7 @@ import Inleiding from './components/inleiding.vue';
 import ChapterComp from './components/chapter.vue';
 import ProjectComp from './components/project.vue';
 
+Vue.use(VuePageTransition);
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -18,6 +20,7 @@ const router = new VueRouter({
       path: '',
       name: 'home',
       component: Home,
+      meta: { transition: 'fade-in-up' },
       // alias: '/home'
     },
     {

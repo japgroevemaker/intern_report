@@ -90,7 +90,7 @@
         <tiny-slider ref="projectSlider" v-if="projects" v-bind="sliderConfig" >
             <div v-for="(project, index) in projects" :key="index">
                 <router-link :to="{name: 'project', params: { title: project.title } }">
-                    <div class="project-image position-relative" :style="'background-image: url(/static/projects/' + project.image + ')'">
+                    <div @click="backToTop" class="project-image position-relative" :style="'background-image: url(/static/projects/' + project.image + ')'">
                         <div class="-box position-absolute">
                                 <h2 class="-title mt-n2">
                                     {{project.title}}   
@@ -169,7 +169,6 @@ export default {
 
     methods: {
         backToTop(){
-            
             window.scrollTo(0, 0);
         },
 

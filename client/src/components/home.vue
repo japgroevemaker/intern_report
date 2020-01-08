@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <div class="container mt-5">
         <div class="row">
             <div class="col-10 text-center mx-auto mb-3">
                 <p class="-caption text-left mb-5">
@@ -12,11 +12,12 @@
         
         <div class="clearfix my-5"></div>
 
-        
+    
+        </div>
             <tiny-slider ref="tinySlider" v-if="chapters" v-bind="sliderConfig">
                 <div v-for="(chapter, index) in chapters" :key="index">
                     <router-link :to="{name: 'chapter', params: { title: chapter.title } }">
-                    <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
+                    <div @click="backToTop" class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
                         <div class="-box position-absolute">
                             <h4 class="-title-caption">
                                 {{chapter.titleCaption}}
@@ -30,6 +31,7 @@
                     </router-link>
                 </div>
             </tiny-slider>
+        
        
 
         <div class="clearfix my-5 "></div>
@@ -72,12 +74,25 @@ export default {
             swipeAngle: 45,
             items: 1.5,
             gutter: 20,
-            edgePadding: 40
+            edgePadding: 40,
+            responsive: {
+                768: {
+                    items: 2.8,
+                    gutter: 40,
+                    edgePadding: 80,
+                    loop: true,
+                    touch: false,
+                }
+            }
         }
     },
 
 
     methods: {
+        backToTop(){
+            window.scrollTo(0, 0);
+        },
+
         fetchPageData(pageId) {
             PageService.getPages(pageId)
                 .then(response => {
@@ -96,6 +111,24 @@ export default {
 <style lang="scss">
     // @import 'tiny-slider/src/tiny-slider';
 
+    .onload-enter {
+        opacity: 0;
+        transform: translateY(100px)
+    }
+
+    .onload-enter-active {
+        transition: all .35s ease-in;
+    }
+
+    .onloadTwo-enter {
+        opacity: 0;
+        transform: translateY(100px)
+    }
+
+    .onloadTwo-enter-active {
+        transition: all .35s ease-in;
+    }
+
     .-caption {
         color: #fff;
         font-size: $plain-text;
@@ -113,6 +146,10 @@ export default {
         background-size: cover;
         background-position: center;
         padding-bottom: 170%;
+
+        @include md {
+            padding-bottom: 50%;
+        }
 
         .-box {
             bottom: 30px;
