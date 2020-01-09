@@ -1,42 +1,4 @@
-$xs: "(min-width: 0px)";
-$sm: "(min-width: 576px)";
-$md: "(min-width: 768px)";
-$lg: "(min-width: 992px)";
-$xl: "(min-width: 1200px)";
 
-
-@mixin xs {
-	@media #{$xs}  {
-		@content;
-	}
-}
-@mixin sm {
-	/*
-		@include sm{
-			.home{
-				float:left;	
-			}
-		}
-	*/
-	@media #{$sm}  {
-		@content;
-	}
-}
-@mixin md{
-	@media #{$md}  {
-  		@content;
-	}
-}
-@mixin lg {
-	@media #{$lg}  {
-		@content;
-	}
-}
-@mixin xl {
-	@media #{$xl}  {
-		@content;
-	}
-}
 
 //color
 $black-color: #121212 !important;
@@ -44,16 +6,3 @@ $grey-color: #2C2C2E !important;
 $pink-color: #CF6679 !important;
 $white-color: #fff !important;
 $green-color: #58C67F !important;
-
-// font
-$fw-bold: 700 !important;
-$fw-regular: 400 !important;
-$fw-light: 300 !important;
-
-$plain-text: 18px !important;
-$line-height: 35px !important;
-
-@include md {
-    $plain-text: 25px !important;
-    $line-height: 35px !important;
-}

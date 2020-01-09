@@ -3,13 +3,13 @@
         <footer>
             <div class="container py-3">
             
-                    <div class="row contact-items">
-                        <div class="col-6 ml-3">
-                            <ul class="pl-0">
+                    <div class="row contact-items my-md-3">
+                        <div class="col-5 ml-3 d-md-flex my-md-auto mx-auto">
+                            <ul class="pl-0 mr-md-5 mb-md-0">
                                 <li class="contact-item" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
                             </ul>
 
-                            <ul class="pl-0">
+                            <ul class="pl-0 mb-md-0">
                                 <li class="contact-item" v-for="(contactItemDown, index) in contactItemsDown" :key="index">{{contactItemDown}}</li>
                             </ul>
                         </div>

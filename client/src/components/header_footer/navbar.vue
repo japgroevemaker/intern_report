@@ -89,7 +89,16 @@ export default {
 
     .nav-container {
         z-index: 1000;
+        padding-top: 30%;
+        top: 0;
+        bottom: 0;
+        background-color: $pink-color;
+
+        @include md {
+            padding-top: 10%;
+        }
         .-close {
+            cursor: pointer;
             font-size: 15px;
             font-weight: $fw-bold;
             color: $grey-color;
@@ -102,10 +111,6 @@ export default {
             border-top: solid 2px #fff;
         }
 
-        padding-top: 30%;
-        top: 0;
-        bottom: 0;
-        background-color: $pink-color;
 
         a {
             font-weight: $fw-bold;
@@ -115,6 +120,10 @@ export default {
 
         .contact-items {
             margin-top: 30%;
+            
+            @include md {
+                margin-top: 10%;
+            }
 
             .contact-item {
                 list-style-type: none;

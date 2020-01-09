@@ -20,6 +20,17 @@ app.use('/api/pages', cors(), Pages)
 app.use('/api/chapters', cors(), Chapters)
 app.use('/api/projects', cors(), Projects)
 
+//handle production
+if(process.env.NODE_ENV ===  'production') {
+    //static folder
+    app.use(express.static(__dirname + '/public/index.html'));
+
+    //handle SPA
+    app.get(/.*/, function(req, res){
+        res.sendFile(__dirname + '/public/index.html');
+    })
+}
+
 app.listen(3000, function() {
     console.log('Running on port 3000')
 })

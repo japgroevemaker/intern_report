@@ -3,7 +3,7 @@
         <div class="container mt-5">
         <div class="row">
             <div class="col-10 text-center mx-auto mb-3">
-                <p class="-caption text-left mb-5">
+                <p class="plain-text text-left mb-5">
                     {{text}}
                 </p>
                 <router-link :to="{ name: 'inleiding', params: { title: 'inleiding'}}"> <span class="read-more text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
@@ -71,17 +71,15 @@ export default {
             loop: false,
             navPosition: 'bottom',
             controls: false,
-            swipeAngle: 45,
+            // swipeAngle: 45,
             items: 1.5,
             gutter: 20,
             edgePadding: 40,
             responsive: {
                 768: {
-                    items: 2.8,
-                    gutter: 40,
-                    edgePadding: 80,
-                    loop: true,
-                    touch: false,
+                    items: 2.7,
+                    gutter: 30,
+
                 }
             }
         }
@@ -148,7 +146,9 @@ export default {
         padding-bottom: 170%;
 
         @include md {
-            padding-bottom: 50%;
+            // width: 70%;
+            margin: auto;
+            padding-bottom: 70%;
         }
 
         .-box {

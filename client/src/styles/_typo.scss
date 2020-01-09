@@ -1,0 +1,80 @@
+$fw-bold: 700 !important;
+$fw-regular: 400 !important;
+$fw-light: 300 !important;
+
+$plain-text: 18px !important;
+$line-height: 35px !important;
+
+@mixin _plain-text {
+    font-size: 18px;
+    line-height: $line-height;
+    color: $white-color;
+
+    @include md {
+        font-size: 25px;
+        line-height: 45px !important;
+    }
+}
+
+.plain-text {
+    @include _plain-text;
+}
+
+@mixin _caption {
+    color: $pink-color;
+    font-weight: $fw-bold;
+    font-size: 18px;
+    line-height: $line-height;
+
+    @include md {
+        font-size: 25px;
+        line-height: 45px !important;
+    }
+}
+
+.caption {
+    @include _caption
+}
+
+@mixin _text-header {
+    color: $pink-color;
+    font-size: 18px;
+    font-weight: $fw-bold;
+    line-height: $line-height;
+
+    @include md {
+        font-size: 25px;
+    }
+}   
+
+.text-heading {
+    @include _text-header;
+}
+
+@mixin _title {
+    color: $white-color;
+    font-weight: $fw-bold;
+    font-size: 40px;
+
+    @include md {
+        font-size: 60px;
+    }
+}
+
+@mixin _title-caption {
+    color: $white-color;
+    font-size: 15px;
+    font-weight: $fw-light;
+
+    @include md {
+        font-size: 25px;;
+    }
+}
+
+.-title {
+    @include _title;
+}
+
+.-title-caption {
+    @include _title-caption;
+}

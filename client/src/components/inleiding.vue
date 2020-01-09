@@ -1,10 +1,12 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-10 mx-auto">
-                <p class="text">
-                    {{text}}
-                </p>
+        <div class="container my-5">
+            <div class="row pb-5">
+                <div class="col-10 mx-auto">
+                    <p class="plain-text">
+                        {{text}}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -15,11 +17,6 @@
         background-color: $pink-color;
     }
 
-    .text {
-        color: $white-color;
-        line-height: $line-height;
-        font-size: $plain-text;
-    }
 </style>
 
 <script>

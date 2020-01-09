@@ -1,31 +1,37 @@
 <template>
     <div>
-        <div class="row mb-5">
-            <div class="col-10 mx-auto">
-                <div class="header-image w-100" :style="'background-image: url(/static/chapters/' + headerImage + ')'">
-                    <div class="-box position-absolute">
-                            <h4 class="-title-caption">
-                                {{titleCaption}}
-                            </h4>
-                            <h2 class="-title mt-n2">
-                                {{title}}   
-                            </h2>
-                        </div>
+        <div class="container-fluid mt-5">
+            <div class="row mb-5">
+                <div class="col-10 mx-auto">
+                    <div class="header-image w-100" :style="'background-image: url(/static/chapters/' + headerImage + ')'">
+                        <div class="-box position-absolute">
+                                <h4 class="-title-caption">
+                                    {{titleCaption}}
+                                </h4>
+                                <h2 class="-title mt-n2">
+                                    {{title}}   
+                                </h2>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row mb-5">
-            <div class="col-10 mx-auto">
-                <p class="caption">{{caption}}</p>
+        <div class="container mt-5">
+
+            <div class="row mb-5">
+                <div class="col-10 mx-auto">
+                    <p class="caption">{{caption}}</p>
+                </div>
+
+                <div class="col-10 mx-auto mt-5" v-if="text[0]">
+                    <h3 class="text-heading mb-n1">{{text[0].heading}}</h3>
+                    <p class="plain-text">
+                        {{text[0].text}}
+                    </p>
+                </div>            
             </div>
 
-            <div class="col-10 mx-auto mt-5" v-if="text[0]">
-                <h3 class="text-heading">{{text[0].heading}}</h3>
-                <p class="text">
-                    {{text[0].text}}
-                </p>
-            </div>            
         </div>
 
         <tiny-slider ref="tinySlider" v-if="images" v-bind="sliderConfig" >
@@ -34,49 +40,52 @@
             </div>
         </tiny-slider>
 
-        <div class="row" v-if="text[1]">
-            <div class="col-10 mx-auto mt-2 mb-5">
-                <h3 class="text-heading mb-n1" >{{text[1].heading}}</h3>
-                <p class="text">
-                    {{text[1].text}}
-                </p>
-            </div>
-        </div>
 
-         <div class="row" v-if="text[2]">
-            <div class="col-10 mx-auto mt-2 mb-5">
-                <h3 class="text-heading mb-n1">{{text[2].heading}}</h3>
-                <p class="text">
-                    {{text[2].text}}
-                </p>
-            </div>
-        </div>
-
-        <div class="row" v-if="goals">
-            <div class="col-10 mx-auto mt-2 mb-5"  v-for="(goal, index) in goals" :key="index">
-                <h3 class="text-heading">{{goal.title}}</h3>
-                <div class="d-flex mb-4">
-                    <div class="circle mr-5">
-                        <img src="/static/chapters/icons/check-solid.svg" alt="">
-                    </div>
-                    <p class="competention my-auto">
-                        {{goal.competention}}
+        <div class="container">    
+            <div class="row" v-if="text[1]">
+                <div class="col-10 mx-auto mt-2 mb-5">
+                    <h3 class="text-heading mb-n1" >{{text[1].heading}}</h3>
+                    <p class="plain-text">
+                        {{text[1].text}}
                     </p>
                 </div>
-                <p class="text">
-                    {{goal.text}}
-                </p>
-                <div v-if="goal.image" class="goal-image" :style="'background-image: url(/static/chapters/' + goal.image + ')'"></div>
-                <hr>
+            </div>
+
+            <div class="row" v-if="text[2]">
+                <div class="col-10 mx-auto mt-2 mb-5">
+                    <h3 class="text-heading mb-n1">{{text[2].heading}}</h3>
+                    <p class="plain-text">
+                        {{text[2].text}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" v-if="goals">
+                <div class="col-10 mx-auto mt-2 mb-5"  v-for="(goal, index) in goals" :key="index">
+                    <h3 class="text-heading">{{goal.title}}</h3>
+                    <div class="d-flex mb-4">
+                        <div class="circle mr-5">
+                            <img src="/static/chapters/icons/check-solid.svg" alt="">
+                        </div>
+                        <p class="competention my-auto">
+                            {{goal.competention}}
+                        </p>
+                    </div>
+                    <p class="plain-text">
+                        {{goal.text}}
+                    </p>
+                    <div v-if="goal.image" class="goal-image" :style="'background-image: url(/static/chapters/' + goal.image + ')'"></div>
+                    <hr>
+                </div>
             </div>
         </div>
 
         <div class="program-slider"  v-if="programming">
-            <tiny-slider ref="programSlider" v-if="programming" v-bind="sliderConfig" >
+            <tiny-slider ref="programSlider" v-if="programming" v-bind="programSlider" >
                 <div v-for="(type, index) in programming" :key="index">
-                    <div class="programming-card pt-2 px-4">
-                        <div class="d-flex justify-content-around w-75 my-4 mx-auto">
-                            <img class="-image" :src="'/static/chapters/icons/'+ type.image" alt="">
+                    <div class="programming-card pt-2 pb-md-3 px-4 px-md-5">
+                        <div class="d-flex w-75 my-4 mx-auto">
+                            <img class="-image mr-3" :src="'/static/chapters/icons/'+ type.image" alt="">
                             <h4 class="-title my-auto">{{type.title}}</h4>
                         </div>
                         <p class="-text">
@@ -102,15 +111,17 @@
             </div>
         </tiny-slider>
 
-        <div class="row">
-            <div class="col-10 d-flex justify-content-between mx-auto">
-                <router-link :to="{name: 'chapter', params: { title: prevLink } }">
-                    <p @click="backToTop" class="-to-chapter my-4"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
-                </router-link>
-                <router-link  :to="{name: 'chapter', params: { title: nextLink } }" >
-                    <p @click="backToTop" class="-to-chapter my-4"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
-                </router-link>
+        <div class="container">
+            <div class="row">
+                <div class="col-10 d-flex justify-content-between mx-auto">
+                    <router-link :to="{name: 'chapter', params: { title: prevLink } }">
+                        <p @click="backToTop" class="-to-chapter my-4"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
+                    </router-link>
+                    <router-link  :to="{name: 'chapter', params: { title: nextLink } }" >
+                        <p @click="backToTop" class="-to-chapter my-4"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
+                    </router-link>
 
+                </div>
             </div>
         </div>
     </div>
@@ -138,7 +149,8 @@ export default {
             toProject: 'naar project',
             chapter: [],
             projects: null,
-            sliderConfig: {}
+            sliderConfig: {},
+            programSlider: {}
         }
     },
 
@@ -163,7 +175,31 @@ export default {
             swipeAngle: 45,
             items: 1.5,
             gutter: 20,
-            edgePadding: 40
+            edgePadding: 40,
+            responsive: {
+                768: {
+                    items: 2,
+                    // disable: true
+                }
+            }
+        },
+        this.programSlider = {
+            center: true,
+            mouseDrag: true,
+            touch: true,
+            loop: false,
+            navPosition: 'bottom',
+            controls: false,
+            swipeAngle: 45,
+            items: 1.5,
+            gutter: 20,
+            edgePadding: 40,
+            responsive: {
+                768: {
+                    items: 3.2,
+                    nav: false
+                }
+            }
         }
     },
 
@@ -212,29 +248,7 @@ export default {
              })
          },
 
-    },
-
-    // computed: {
-    //     getImages: {
-    //         get: function() {
-    //             console.log(this.images.length)
-    //              return this.images.length > 0 === this.images.length;
-    //         }
-    //     }
-    // },
-
-    // watch: {
-    //     getImages: {
-    //         initSlider(){
-    //             if(this.getImages){
-    //                 const slider = this.$refs.tinySlider
-    //                 slider.init()
-    //             }
-    //         }
-    //     }
-    // }
-
-
+    }
 }
 </script>
 
@@ -258,41 +272,19 @@ export default {
         background-position: center;
         padding-bottom: 170%;
 
+        @include md {
+            padding-bottom: 40%;
+        }
+
         .-box {
             bottom: 30px;
             left: 30px;
+
+            @include md {
+                left: 100px;
+            }
         }
 
-        .-title-caption {
-            color: $white-color;
-            font-size: 15px;
-        }
-
-        .-title {
-            color: $white-color;
-            font-weight: $fw-bold;
-            font-size: 40px;
-        }
-    }
-
-    .caption {
-        color: $pink-color;
-        font-weight: $fw-bold;
-        font-size: 18px;
-        line-height: $line-height;
-    }
-
-    .text-heading {
-        color: $pink-color;
-        font-size: 18px;
-        font-weight: $fw-bold;
-        line-height: $line-height;
-    }
-
-    .text {
-        font-size: 18px;
-        line-height: $line-height;
-        color: $white-color;
     }
 
     .circle {
@@ -342,11 +334,20 @@ export default {
             color: $pink-color;
             font-weight: $fw-bold;
             font-size: 18px;
+
+            @include md {
+                font-size: 25px;
+            }
         }
 
         .-text {
             color: $white-color;
             line-height: $line-height;
+
+            @include md {
+                font-size: 20px;
+                line-height: 40px !important;
+            }
         }
     }
 
@@ -354,6 +355,10 @@ export default {
         padding-bottom: 170%;
         background-size: cover;
         background-position: center;
+
+        @include md {
+            padding-bottom: 70%;
+        }
 
         .-box {
             bottom: 30px;
@@ -378,5 +383,9 @@ export default {
             font-size: 15px;
             color: $pink-color;
             font-weight: $fw-bold;
+
+            @include md {
+                font-size: 20px;
+            }
     }
 </style>
