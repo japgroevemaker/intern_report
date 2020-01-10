@@ -58,9 +58,10 @@ export default {
         'tiny-slider': VueTinySlider,
     },
 
-    async created() {
+    created() {
         this.fetchPageData('home');
-        // this.rebuildSlider()
+        console.log(this.$route.query)
+        
     },
 
      mounted() {

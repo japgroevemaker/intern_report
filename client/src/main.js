@@ -24,7 +24,7 @@ const router = new VueRouter({
       // alias: '/home'
     },
     {
-      path: '/pages/:title',
+      path: '/:title',
       name: 'inleiding',
       component: Inleiding,
       // // alias: '/inleiding'
@@ -32,7 +32,8 @@ const router = new VueRouter({
     {
       path: '/chapter/:title',
       name: 'chapter',
-      component: ChapterComp
+      component: ChapterComp,
+      alias: '/api'
     },
     {
       path: '/project/:title',

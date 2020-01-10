@@ -7,10 +7,10 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}), bodyParser.json());
 
-app.use(cors({
-    origin: ["http://localhost:8080/pages", "localhost:8080/pages"],
-    credentials: true
-}));
+// app.use(cors({
+//     origin: ["http://localhost:8080/pages", "localhost:8080/pages"],
+//     credentials: true
+// }));
 
 const Pages = require('./router/api/Pages')
 const Chapters = require('./router/api/Chapters')

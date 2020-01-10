@@ -147,7 +147,7 @@ export default {
             next: 'volgende',
             back: 'terug',
             toProject: 'naar project',
-            chapter: [],
+            chapter: null,
             projects: null,
             sliderConfig: {},
             programSlider: {}
@@ -158,9 +158,16 @@ export default {
         'tiny-slider': VueTinySlider
     },
 
-     created() {
-        console.log('created')
+    // beforeRouteEnter (to, from, next) {
+    //     this.fetchChapterData(to.params.title, (err, chapter) => {
+    //         next(vm => vm.setData(err, chapter))
+    //     })
+    // },
+
+    created() {
         this.fetchChapterData(this.$route.params.title)
+        console.log(this.$route.params)
+        console.log('created')
         // this.searchInLowerCase(this.fetchChapterData(this.$route.params.title))
     },
 
