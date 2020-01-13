@@ -115,10 +115,10 @@
             <div class="row">
                 <div class="col-10 d-flex justify-content-between mx-auto">
                     <router-link :to="{name: 'chapter', params: { title: prevLink } }">
-                        <p @click="backToTop" class="-to-chapter my-4"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
+                        <p class="-to-chapter my-4"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
                     </router-link>
                     <router-link  :to="{name: 'chapter', params: { title: nextLink } }" >
-                        <p @click="backToTop" class="-to-chapter my-4"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
+                        <p class="-to-chapter my-4"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
                     </router-link>
 
                 </div>
@@ -137,6 +137,7 @@ export default {
             headerImage: '',
             titleCaption: '',
             title: '',
+            trOUt: 'Begeleider',
             caption: '',
             text: [],
             images: null,
@@ -158,17 +159,11 @@ export default {
         'tiny-slider': VueTinySlider
     },
 
-    // beforeRouteEnter (to, from, next) {
-    //     this.fetchChapterData(to.params.title, (err, chapter) => {
-    //         next(vm => vm.setData(err, chapter))
-    //     })
-    // },
-
     created() {
-        this.fetchChapterData(this.$route.params.title)
-        console.log(this.$route.params)
-        console.log('created')
-        // this.searchInLowerCase(this.fetchChapterData(this.$route.params.title))
+        this.fetchChapterData(this.$route.query.q1)
+        console.log(this.$route.query)
+        // this.replaceRouter(this.title)
+        this.backToTop()
     },
 
     mounted() {
@@ -211,6 +206,10 @@ export default {
     },
 
     methods: {
+        // replaceRouter(title){
+        //     this.$router.replace({name: 'chapter', params: {title: title}, query: {q1: title}})
+        // },
+
         backToTop(){
             window.scrollTo(0, 0);
         },

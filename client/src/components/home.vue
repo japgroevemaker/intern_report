@@ -6,7 +6,7 @@
                 <p class="plain-text text-left mb-5">
                     {{text}}
                 </p>
-                <router-link :to="{ name: 'inleiding', params: { title: 'inleiding'}}"> <span class="read-more text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
+                <router-link :to="{ name: 'inleiding', params: { pageId: 'inleiding'}}"> <span class="read-more text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
             </div>
         </div>
         
@@ -16,8 +16,8 @@
         </div>
             <tiny-slider ref="tinySlider" v-if="chapters" v-bind="sliderConfig">
                 <div v-for="(chapter, index) in chapters" :key="index">
-                    <router-link :to="{name: 'chapter', params: { title: chapter.title } }">
-                    <div @click="backToTop" class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
+                    <router-link :to="{name: 'chapter', query: { q1: chapter.title } }">
+                    <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
                         <div class="-box position-absolute">
                             <h4 class="-title-caption">
                                 {{chapter.titleCaption}}
@@ -60,6 +60,7 @@ export default {
 
     created() {
         this.fetchPageData('home');
+        this.backToTop();
         console.log(this.$route.query)
         
     },

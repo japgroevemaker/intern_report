@@ -31,8 +31,8 @@ export default {
             error: ''
         }
     },
-   async created() {
-        this.fetchPageData(this.$route.params.title);
+    created() {
+        this.fetchPageData(this.$route.params.pageId);
     },
     methods: {
         fetchPageData(pageId) {

@@ -24,16 +24,16 @@ const router = new VueRouter({
       // alias: '/home'
     },
     {
-      path: '/:title',
-      name: 'inleiding',
-      component: Inleiding,
-      // // alias: '/inleiding'
-    },
-    {
-      path: '/chapter/:title',
+      path: '/chapter/',
       name: 'chapter',
       component: ChapterComp,
-      alias: '/api'
+      alias: '/:title'
+    },
+    {
+      path: '/page/:pageId',
+      name: 'inleiding',
+      component: Inleiding,
+      alias: '/inleiding'
     },
     {
       path: '/project/:title',

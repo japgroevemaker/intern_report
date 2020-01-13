@@ -17,7 +17,7 @@
                             <ul class="nav flex-column" >
                                 <transition-group name="menu-trans">
                                     <li class="nav-item mt-5" @click="visible = !visible" v-for="(navItem, index) in navItems" :key="index"> 
-                                        <router-link :to="{name: navItem, params: {title: navItem}}">{{navItem}}</router-link> 
+                                        <router-link :to="{name: navItem, params: {pageId: navItem}}">{{navItem}}</router-link> 
                                     </li>
                                 </transition-group>
                             </ul>

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const pages = 'http://localhost:3000/api/pages';
-const chapters = 'http://localhost:3000/api/chapters';
-const projects = 'http://localhost:3000/api/projects';
+const pages = 'api/pages';
+const chapters = 'api/chapters';
+const projects = 'api/projects';
 
 export default {
     getPages(pagina) {
