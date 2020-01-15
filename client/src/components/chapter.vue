@@ -98,8 +98,8 @@
 
         <tiny-slider ref="projectSlider" v-if="projects" v-bind="sliderConfig" >
             <div v-for="(project, index) in projects" :key="index">
-                <router-link :to="{name: 'project', params: { title: project.title } }">
-                    <div @click="backToTop" class="project-image position-relative" :style="'background-image: url(/static/projects/' + project.image + ')'">
+                <router-link :to="{name: 'project', query: { name: project.title } }">
+                    <div class="project-image position-relative" :style="'background-image: url(/static/projects/' + project.image + ')'">
                         <div class="-box position-absolute">
                                 <h2 class="-title mt-n2">
                                     {{project.title}}   
@@ -114,10 +114,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 d-flex justify-content-between mx-auto">
-                    <router-link :to="{name: 'chapter', params: { title: prevLink } }">
+                    <router-link :to="{name: 'chapter', query: { name: prevLink } }">
                         <p class="-to-chapter my-4"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
                     </router-link>
-                    <router-link  :to="{name: 'chapter', params: { title: nextLink } }" >
+                    <router-link  :to="{name: 'chapter', query: { name: nextLink } }" >
                         <p class="-to-chapter my-4"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
                     </router-link>
 
@@ -132,12 +132,15 @@ import PageService from '../api'
 import VueTinySlider from 'vue-tiny-slider';
 
 export default {
+    title(){
+        return `intern report - chapter ${this.title}`
+    },
+
     data() {
         return {
             headerImage: '',
             titleCaption: '',
             title: '',
-            trOUt: 'Begeleider',
             caption: '',
             text: [],
             images: null,
@@ -160,13 +163,16 @@ export default {
     },
 
     created() {
-        this.fetchChapterData(this.$route.query.q1)
-        console.log(this.$route.query)
-        // this.replaceRouter(this.title)
+        // this.fetchChapterData(this.$route.params.title)
+        this.fetchChapterData(this.$route.query.name)
         this.backToTop()
     },
 
-    mounted() {
+ mounted() {
+        this.title = {
+          title: this.title
+        },
+
         this.sliderConfig = {
             center: true,
             mouseDrag: true,
@@ -206,10 +212,6 @@ export default {
     },
 
     methods: {
-        // replaceRouter(title){
-        //     this.$router.replace({name: 'chapter', params: {title: title}, query: {q1: title}})
-        // },
-
         backToTop(){
             window.scrollTo(0, 0);
         },
@@ -253,8 +255,7 @@ export default {
                     this.message = error
              })
          },
-
-    }
+    },
 }
 </script>
 

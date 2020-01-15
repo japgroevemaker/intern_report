@@ -3,7 +3,7 @@
     <navBar/>
     
       <vue-page-transition name="overlay-right-full">
-        <router-view :key="$route.params.title"/>
+        <router-view :key="$route.query.name"/>
       </vue-page-transition>
      
     
@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 
   .overlay-top,.overlay-right,.overlay-left,.overlay-bottom {
-    background: $pink-color;
+    background: $grey-color;
     transition-duration: .2s !important;
     z-index: 1000 !important;
   }

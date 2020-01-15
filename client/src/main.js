@@ -2,15 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VuePageTransition from 'vue-page-transition'
+import titleMixin from '../mixins/titleMixin.js'
 
 //routes
 import Home from './components/home.vue';
-import Inleiding from './components/inleiding.vue';
+import Page from './components/page.vue';
 import ChapterComp from './components/chapter.vue';
 import ProjectComp from './components/project.vue';
 
 Vue.use(VuePageTransition);
 Vue.use(VueRouter);
+Vue.mixin(titleMixin);
 
 const router = new VueRouter({
   mode: 'history',
@@ -21,22 +23,27 @@ const router = new VueRouter({
       name: 'home',
       component: Home,
       meta: { transition: 'fade-in-up' },
-      // alias: '/home'
     },
     {
       path: '/chapter/',
       name: 'chapter',
       component: ChapterComp,
-      alias: '/:title'
+      meta:  {
+        title: 'Chapter'
+      }
     },
     {
-      path: '/page/:pageId',
+      path: '/page/',
       name: 'inleiding',
-      component: Inleiding,
-      alias: '/inleiding'
+      component: Page
     },
     {
-      path: '/project/:title',
+      path: '/page/',
+      name: 'over-mij',
+      component: Page
+    },
+    {
+      path: '/project/',
       name: 'project',
       component: ProjectComp
     }

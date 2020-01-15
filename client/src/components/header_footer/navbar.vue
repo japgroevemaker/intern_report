@@ -15,11 +15,18 @@
                     <div class="row">
                         <div class="col-8 ml-3">
                             <ul class="nav flex-column" >
-                                <transition-group name="menu-trans">
-                                    <li class="nav-item mt-5" @click="visible = !visible" v-for="(navItem, index) in navItems" :key="index"> 
-                                        <router-link :to="{name: navItem, params: {pageId: navItem}}">{{navItem}}</router-link> 
-                                    </li>
-                                </transition-group>
+                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                    <router-link :to="{name: 'home'}">home</router-link> 
+                                </li>
+                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                    <router-link :to="{name: 'inleiding', query: {name: 'inleiding'}}">inleiding</router-link> 
+                                </li>
+                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                    <router-link :to="{name: 'chapter', query: {name: 'Projecten'}}">projecten</router-link> 
+                                </li>
+                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                    <router-link :to="{name: 'over-mij', query: {name: 'over mij'}}">over mij</router-link> 
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -49,7 +56,6 @@
 export default {
     data(){
         return {
-            navItems: ['home', 'inleiding', 'over mij'],
             contactItemsUp: ['(06) 29 62 06 22', 'info@joepgravemaker'],
             contactItemsDown: ['lange nieuwstraat 116', 'ijmuiden'],
             visible: false

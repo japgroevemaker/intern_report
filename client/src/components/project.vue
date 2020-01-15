@@ -107,12 +107,15 @@
         },
 
         created(){
-            this.fetchProjectData(this.$route.params.title)
-            
+            this.fetchProjectData(this.$route.query.name)
+            this.backToTop()
         },
  
-
         methods: {
+            backToTop(){
+                window.scrollTo(0, 0);
+            },
+
             fetchProjectData(projectId){
                 PageService.getProject(projectId)
                     .then(response => {
