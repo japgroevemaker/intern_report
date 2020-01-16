@@ -1,3 +1,6 @@
+$open-sans: 'Open Sans', sans-serif !important;
+$montserrat: 'Montserrat', sans-serif !important;
+
 $fw-bold: 700 !important;
 $fw-regular: 400 !important;
 $fw-light: 300 !important;
@@ -5,7 +8,16 @@ $fw-light: 300 !important;
 $plain-text: 18px !important;
 $line-height: 35px !important;
 
+.open-sans {
+    font-family: $open-sans;
+}
+
+.montserrat {
+    font-family: $montserrat;
+}
+
 @mixin _plain-text {
+    font-family: $open-sans;
     font-size: 18px;
     line-height: $line-height;
     color: $white-color;
@@ -21,6 +33,7 @@ $line-height: 35px !important;
 }
 
 @mixin _caption {
+    font-family: $open-sans;
     color: $pink-color;
     font-weight: $fw-bold;
     font-size: 18px;
@@ -52,6 +65,7 @@ $line-height: 35px !important;
 }
 
 @mixin _title {
+    font-family: $montserrat;
     color: $white-color;
     font-weight: $fw-bold;
     font-size: 40px;
@@ -62,6 +76,7 @@ $line-height: 35px !important;
 }
 
 @mixin _title-caption {
+    font-family: $montserrat;
     color: $white-color;
     font-size: 15px;
     font-weight: $fw-light;

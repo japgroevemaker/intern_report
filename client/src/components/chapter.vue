@@ -115,10 +115,10 @@
             <div class="row">
                 <div class="col-10 d-flex justify-content-between mx-auto">
                     <router-link :to="{name: 'chapter', query: { name: prevLink } }">
-                        <p class="-to-chapter my-4"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
+                        <p class="-to-chapter my-4 montserrat"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
                     </router-link>
                     <router-link  :to="{name: 'chapter', query: { name: nextLink } }" >
-                        <p class="-to-chapter my-4"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
+                        <p class="-to-chapter my-4 montserrat"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
                     </router-link>
 
                 </div>
@@ -187,7 +187,6 @@ export default {
             responsive: {
                 768: {
                     items: 2,
-                    // disable: true
                 }
             }
         },

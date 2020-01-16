@@ -25,16 +25,13 @@
                             <h2 class="-title mt-n2">
                                 {{chapter.title}}   
                             </h2>
-                            <p class="-to-chapter mt-5"> {{toChapter}} <i class="fa fa-arrow-right ml-5"></i></p>
+                            <p class="-to-chapter mt-5 montserrat"> {{toChapter}} <i class="fa fa-arrow-right ml-5"></i></p>
                         </div>
                     </div>
                     </router-link>
                 </div>
             </tiny-slider>
         
-       
-
-        <div class="clearfix my-5 "></div>
     </div>
 </template>
 
@@ -59,16 +56,16 @@ export default {
     },
 
     created() {
+        this.checkFooter()
         this.fetchPageData('home');
         this.backToTop();
-        console.log(this.$route.query)
-        
     },
 
-     mounted() {
+    mounted() {
         this.sliderConfig = {
             center: true,
             mouseDrag: true,
+            lazyload: true,
             touch: true,
             loop: false,
             navPosition: 'bottom',
@@ -79,16 +76,22 @@ export default {
             edgePadding: 40,
             responsive: {
                 768: {
-                    items: 2.7,
+                    items: 3.6,
                     gutter: 30,
-
                 }
             }
         }
     },
 
-
     methods: {
+        checkFooter(){
+            let footer = document.querySelector('footer')
+           if(footer.classList.contains('positioning')){
+               console.log('removed class')
+               footer.classList.remove('positioning')
+           }
+        },
+
         backToTop(){
             window.scrollTo(0, 0);
         },
@@ -150,7 +153,7 @@ export default {
         @include md {
             // width: 70%;
             margin: auto;
-            padding-bottom: 70%;
+            padding-bottom: 100%;
         }
 
         .-box {

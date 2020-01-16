@@ -5,10 +5,10 @@ import VuePageTransition from 'vue-page-transition'
 import titleMixin from '../mixins/titleMixin.js'
 
 //routes
-import Home from './components/home.vue';
-import Page from './components/page.vue';
-import ChapterComp from './components/chapter.vue';
-import ProjectComp from './components/project.vue';
+// import Home from './components/home.vue';
+// import Page from './components/page.vue';
+// import ChapterComp from './components/chapter.vue';
+// import ProjectComp from './components/project.vue';
 
 Vue.use(VuePageTransition);
 Vue.use(VueRouter);
@@ -19,33 +19,34 @@ const router = new VueRouter({
   base: '/',
   routes : [
     {
-      path: '',
+      path: '/',
       name: 'home',
-      component: Home,
-      meta: { transition: 'fade-in-up' },
+      component: () => import('./components/home.vue'),
+      // meta: { transition: 'fade-in-up' },
     },
     {
       path: '/chapter/',
       name: 'chapter',
-      component: ChapterComp,
-      meta:  {
-        title: 'Chapter'
-      }
+      component: () => import('./components/chapter.vue')
     },
     {
       path: '/page/',
       name: 'inleiding',
-      component: Page
+      component: () => import('./components/page.vue')
     },
     {
       path: '/page/',
       name: 'over-mij',
-      component: Page
+      component: () => import('./components/page.vue')
     },
     {
       path: '/project/',
       name: 'project',
-      component: ProjectComp
+      component: () => import('./components/project.vue')
+    },
+    {
+      path: '*',
+      component: () => import('./components/404.vue')
     }
   ]
 })

@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <navBar/>
-    
+      <div class="clearfix py-4"></div>
       <vue-page-transition name="overlay-right-full">
         <router-view :key="$route.query.name"/>
       </vue-page-transition>
-     
-    
+    <div class="clearfix py-4"></div>
     <Footer/>
   </div>
 </template>
@@ -29,13 +28,12 @@ export default {
 
   .overlay-top,.overlay-right,.overlay-left,.overlay-bottom {
     background: $grey-color;
-    transition-duration: .2s !important;
+    transition-duration: .5s !important;
     z-index: 1000 !important;
   }
 
   body {
     background-color: $black-color;
-    font-family: 'Open Sans', sans-serif;
   }
 
   //  .tns-outer {

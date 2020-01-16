@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="nav-bar col-10 pt-3 mt-3 mx-auto">
+        <div class="nav-bar position-fixed col-10 pt-3 mt-3 mx-auto">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <i class="fa fa-bars float-right" @click="visible = !visible"></i>
@@ -15,23 +15,23 @@
                     <div class="row">
                         <div class="col-8 ml-3">
                             <ul class="nav flex-column" >
-                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                <li class="nav-item mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'home'}">home</router-link> 
                                 </li>
-                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                <li class="nav-item mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'inleiding', query: {name: 'inleiding'}}">inleiding</router-link> 
                                 </li>
-                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                <li class="nav-item mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'chapter', query: {name: 'Projecten'}}">projecten</router-link> 
                                 </li>
-                                <li class="nav-item mt-5" @click="visible = !visible"> 
+                                <li class="nav-item mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'over-mij', query: {name: 'over mij'}}">over mij</router-link> 
                                 </li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div class="row contact-items">
+                    <div class="row contact-items mt-5">
                         <div class="col-8 ml-3">
                             <ul class="pl-0">
                                 <li class="contact-item" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
@@ -93,9 +93,16 @@ export default {
         font-size: 30px !important;
     }
 
+    .nav-bar {
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+    }
+
     .nav-container {
         z-index: 1000;
-        padding-top: 30%;
+        padding-top: 20%;
         top: 0;
         bottom: 0;
         background-color: $pink-color;
@@ -125,15 +132,15 @@ export default {
         }
 
         .contact-items {
-            margin-top: 30%;
+            // margin-top: 30%;
             
             @include md {
-                margin-top: 10%;
+                // margin-top: 10%;
             }
 
             .contact-item {
                 list-style-type: none;
-                font-size: 10px;
+                font-size: 12px;
                 color: $grey-color
             }
 
