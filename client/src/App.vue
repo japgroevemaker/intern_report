@@ -14,7 +14,6 @@
 import navBar from './components/header_footer/navbar.vue'
 import Footer from './components/header_footer/footer.vue'
 
-
 export default {
   name: 'app',
   components: {
@@ -25,7 +24,6 @@ export default {
 </script>
 
 <style lang="scss">
-
   .overlay-top,.overlay-right,.overlay-left,.overlay-bottom {
     background: $grey-color;
     transition-duration: .5s !important;
@@ -35,11 +33,6 @@ export default {
   body {
     background-color: $black-color;
   }
-
-  //  .tns-outer {
-  //       margin-right: -15px;
-  //       margin-left: -15px;
-  //   }
 
     .tns-nav {
         margin: 20px auto;

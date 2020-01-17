@@ -3,14 +3,14 @@
         <div class="container mt-5">
         <div class="row">
             <div class="col-10 text-center mx-auto mb-3">
-                <p class="plain-text text-left mb-5">
-                    {{text}}
+                <p class="plain-text text-left mb-3 mb-md-5">
+                    {{caption}}
                 </p>
                 <router-link :to="{ name: 'inleiding', query: { name: 'inleiding'}}"> <span class="read-more text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
             </div>
         </div>
         
-        <div class="clearfix my-5"></div>
+        <div class="clearfix my-4 my-md-5"></div>
 
     
         </div>
@@ -19,13 +19,13 @@
                     <router-link :to="{name: 'chapter', query: { name: chapter.title } }">
                     <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
                         <div class="-box position-absolute">
-                            <h4 class="-title-caption">
+                            <h4 class="-title-caption -smaller-caption ml-4">
                                 {{chapter.titleCaption}}
                             </h4>
-                            <h2 class="-title mt-n2">
+                            <h2 class="-title -smaller mt-n2">
                                 {{chapter.title}}   
                             </h2>
-                            <p class="-to-chapter mt-5 montserrat"> {{toChapter}} <i class="fa fa-arrow-right ml-5"></i></p>
+                            <p class="-to-chapter mt-3 montserrat"> {{toChapter}} <i class="fa fa-arrow-right ml-5"></i></p>
                         </div>
                     </div>
                     </router-link>
@@ -43,6 +43,7 @@ export default {
     data() {
         return {    
             title: '',
+            caption: 'Mijn stageperiode heb ik gelopen bij Immense. Immense is een full service internetbureau. Full service wil zeggen dat hier het hele proces van website creatie doorlopen wordt. Van het maken van een ontwerp tot het creëren van het CMS(Content Management Systeem) wat achter de website hangt tot het maken van een volledige online strategie tot het live zetten van de website, bij Immense gebeurd het allemaal.',
             pages: [],
             chapters: null,
             readMore: 'Lees hele inleiding',
@@ -149,6 +150,20 @@ export default {
         background-size: cover;
         background-position: center;
         padding-bottom: 170%;
+        // border: solid 0.02px $grey-color;
+
+        // make title on home page smaller
+        .-smaller {
+            @include md {
+                font-size: 50px !important;
+            }
+        }
+
+        .-smaller-caption {
+            @include md {
+                font-size: 20px !important;
+            }
+        }
 
         @include md {
             // width: 70%;
@@ -159,17 +174,6 @@ export default {
         .-box {
             bottom: 30px;
             left: 30px;
-        }
-
-        .-title-caption {
-            color: $white-color;
-            font-size: 15px;
-        }
-
-        .-title {
-            color: $white-color;
-            font-weight: $fw-bold;
-            font-size: 40px;
         }
 
         .-to-chapter {

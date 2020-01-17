@@ -5,7 +5,7 @@
                 <div class="col-10 mx-auto">
                     <div class="header-image w-100" :style="'background-image: url(/static/chapters/' + headerImage + ')'">
                         <div class="-box position-absolute">
-                                <h4 class="-title-caption">
+                                <h4 class="-title-caption ml-4">
                                     {{titleCaption}}
                                 </h4>
                                 <h2 class="-title mt-n2">
@@ -48,6 +48,9 @@
                     <p class="plain-text">
                         {{text[1].text}}
                     </p>
+                    <p v-if="text[1].declaration" class="plain-text declaration">
+                        {{text[1].declaration}}
+                    </p>
                 </div>
             </div>
 
@@ -88,7 +91,7 @@
                             <img class="-image mr-3" :src="'/static/chapters/icons/'+ type.image" alt="">
                             <h4 class="-title my-auto">{{type.title}}</h4>
                         </div>
-                        <p class="-text">
+                        <p class="plain-text">
                             {{type.text}}
                         </p>
                     </div>
@@ -162,13 +165,22 @@ export default {
         'tiny-slider': VueTinySlider
     },
 
+    beforeCreate() {
+        
+         if(this.$route.query.name == undefined) {
+            this.$router.push({name: '404'})
+        }
+    },
+
     created() {
-        // this.fetchChapterData(this.$route.params.title)
         this.fetchChapterData(this.$route.query.name)
         this.backToTop()
     },
 
  mounted() {
+
+        this.adjustImage()
+
         this.title = {
           title: this.title
         },
@@ -213,6 +225,16 @@ export default {
     methods: {
         backToTop(){
             window.scrollTo(0, 0);
+        },
+
+        adjustImage(){
+            let headerImage = document.querySelector('.header-image');
+
+            if(this.$route.query.name == 'Begeleider'){
+            headerImage.classList.add('-adjust')
+            } else {
+                headerImage.classList.remove('-adjust')
+            }
         },
 
         fetchChapterData(chapterId) {
@@ -290,7 +312,20 @@ export default {
                 left: 100px;
             }
         }
+    }
 
+    // begeleider chapter on desktop change
+    .-adjust {
+        @include md {
+            background-position: top !important;
+        }
+    }
+
+    .declaration {
+        font-weight: $fw-light;
+        font-size: 15px !important;
+        line-height: 25px !important;
+        font-style: italic;
     }
 
     .circle {
@@ -326,6 +361,10 @@ export default {
         padding-bottom: 80%;
         background-size: cover;
         background-position: center;
+
+        @include md {
+            padding-bottom: 50%;
+        }
     }
 
     .programming-card {
@@ -369,12 +408,6 @@ export default {
         .-box {
             bottom: 30px;
             left: 30px;
-        }
-
-        .-title {
-            color: $white-color;
-            font-weight: $fw-bold;
-            font-size: 35px;
         }
 
         .-to-chapter {
