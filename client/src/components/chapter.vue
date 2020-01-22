@@ -63,6 +63,15 @@
                 </div>
             </div>
 
+            <div class="row" v-if="text[3]">
+                <div class="col-10 mx-auto mt-2 mb-5">
+                    <h3 class="text-heading mb-n1">{{text[3].heading}}</h3>
+                    <p class="plain-text">
+                        {{text[3].text}}
+                    </p>
+                </div>
+            </div>
+
             <div class="row" v-if="goals">
                 <div class="col-10 mx-auto mt-2 mb-5"  v-for="(goal, index) in goals" :key="index">
                     <h3 class="text-heading">{{goal.title}}</h3>
@@ -87,7 +96,7 @@
             <tiny-slider ref="programSlider" v-if="programming" v-bind="programSlider" >
                 <div v-for="(type, index) in programming" :key="index">
                     <div class="programming-card pt-2 pb-md-3 px-4 px-md-5">
-                        <div class="d-flex w-75 my-4 mx-auto">
+                        <div class="d-flex flex-row w-75 my-4 mx-auto">
                             <img class="-image mr-3" :src="'/static/chapters/icons/'+ type.image" alt="">
                             <h4 class="-title my-auto">{{type.title}}</h4>
                         </div>
@@ -400,9 +409,14 @@ export default {
         padding-bottom: 170%;
         background-size: cover;
         background-position: center;
+        transition: all 0.2s;
 
         @include md {
             padding-bottom: 70%;
+            &:hover {
+                transition: all 0.2s;
+                transform: translateY(-10px);
+            }
         }
 
         .-box {
@@ -423,8 +437,22 @@ export default {
             color: $pink-color;
             font-weight: $fw-bold;
 
-            @include md {
-                font-size: 20px;
+            i {
+            transition: all .2s;
+        }
+
+        @include md {
+            &:hover {
+                .fa-arrow-left {
+                    transition: all .2s;
+                    transform: translateX(-10px)
+                }
+
+                .fa-arrow-right {
+                    transition: all .2s;
+                    transform: translateX(10px)
+                }
             }
+        }
     }
 </style>

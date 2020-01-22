@@ -143,14 +143,35 @@ export default {
         color: $pink-color;
         font-weight: $fw-bold;
         margin: auto;
+
+        i {
+            transition: all .2s;
+        }
+
+        @include md {
+            &:hover {
+                i {
+                    transition: all .2s;
+                    transform: translateX(10px)
+                }
+            }
+        }
     }
+    
 
     .chapter-image {
         background-color: $pink-color;
         background-size: cover;
         background-position: center;
         padding-bottom: 170%;
-        // border: solid 0.02px $grey-color;
+        transition: all 0.2s;
+
+        @include md {
+            &:hover {
+                transition: all 0.2s;
+                transform: translateY(-10px);
+            }
+        }
 
         // make title on home page smaller
         .-smaller {

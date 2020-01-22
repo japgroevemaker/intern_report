@@ -1,7 +1,13 @@
 <template>
     <div>
-        <div class="nav-bar position-fixed col-10 pt-3 mt-3 mx-auto">
-            <ul class="navbar-nav">
+        <div class="nav-bar d-flex flex-row justify-content-between position-fixed col-10 pt-3 mt-3 mx-auto">
+            <div class="navbar-brand py-0">
+                <router-link :to="{name: 'home'}">
+                    <img src="/static/general/logo.svg" height="25" alt="">
+                    <!-- <h5 class="header-name d-inline ml-3 montserrat">joep gravemaker</h5> -->
+                </router-link>
+            </div>
+            <ul class="navbar-nav pt-1">
                 <li class="nav-item">
                     <i class="fa fa-bars float-right" @click="visible = !visible"></i>
                 </li>
@@ -65,6 +71,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    .nav-item {
+        cursor: pointer;
+    }
 
     .menu-trans-enter {
         opacity: 0;

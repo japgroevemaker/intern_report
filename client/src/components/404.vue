@@ -46,5 +46,11 @@ export default {
         background-size: cover;
         background-position: center;
         padding-bottom: 100%;
+
+        @include md {
+            // background-size: 100%;
+            background-position: top;
+            padding-bottom: 70%;
+        }
     }
 </style>

@@ -24,6 +24,10 @@ export default {
 </script>
 
 <style lang="scss">
+  a:hover {
+    text-decoration: none !important;
+  }
+
   .overlay-top,.overlay-right,.overlay-left,.overlay-bottom {
     background: $grey-color;
     transition-duration: .5s !important;
@@ -55,6 +59,10 @@ export default {
             height: 12px;
             background-color: #1C1C1E;
             border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            -khtml-border-radius: 50%;
             transition: all .2s ease-in;
         }
 

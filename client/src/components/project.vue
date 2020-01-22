@@ -82,6 +82,18 @@
                 </a>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-10 d-flex justify-content-between mx-auto">
+                <router-link :to="{name: 'project', query: { name: prevLink } }">
+                    <p class="-to-chapter my-4 montserrat"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
+                </router-link>
+                <router-link  :to="{name: 'project', query: { name: nextLink } }" >
+                    <p class="-to-chapter my-4 montserrat"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
+                </router-link>
+                </div>
+            </div>
+        
     </div>
 
     </div>
@@ -98,6 +110,10 @@
                 caption: '',
                 myRole: {},
                 tools: {},
+                next: 'volgende',
+                back: 'terug',
+                nextLink: '',
+                prevLink: '',
                 text: [],
                 images: [],
                 link: null,
@@ -134,6 +150,10 @@
                         this.images = project.images
 
                         this.link = project.link
+
+                        this.prevLink = project.back
+                        this.nextLink = project.next
+
                     }).catch(error => {
                         this.error = error.message
                     })
@@ -190,5 +210,29 @@
         background-color: $pink-color;
         font-weight: $fw-bold;
         border: 0;
+    }
+
+    .-to-chapter {
+            font-size: 15px;
+            color: $pink-color;
+            font-weight: $fw-bold;
+
+            i {
+            transition: all .2s;
+        }
+
+        @include md {
+            &:hover {
+                .fa-arrow-left {
+                    transition: all .2s;
+                    transform: translateX(-10px)
+                }
+
+                .fa-arrow-right {
+                    transition: all .2s;
+                    transform: translateX(10px)
+                }
+            }
+        }
     }
 </style>
