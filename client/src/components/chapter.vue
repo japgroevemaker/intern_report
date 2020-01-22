@@ -98,7 +98,7 @@
                     <div class="programming-card pt-2 pb-md-3 px-4 px-md-5">
                         <div class="d-flex flex-row w-75 my-4 mx-auto">
                             <img class="-image mr-3" :src="'/static/chapters/icons/'+ type.image" alt="">
-                            <h4 class="-title my-auto">{{type.title}}</h4>
+                            <h4 class="-title">{{type.title}}</h4>
                         </div>
                         <p class="plain-text">
                             {{type.text}}
