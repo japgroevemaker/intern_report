@@ -6,17 +6,17 @@
                     <div class="row contact-items my-md-3">
                         <div class="col-5 ml-3 d-md-flex my-md-auto mx-auto">
                             <ul class="pl-0 mr-md-5 mb-md-0">
-                                <li class="contact-item" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
+                                <li class="contact-item montserrat" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
                             </ul>
 
                             <ul class="pl-0 mb-md-0">
-                                <li class="contact-item" v-for="(contactItemDown, index) in contactItemsDown" :key="index">{{contactItemDown}}</li>
+                                <li class="contact-item montserrat" v-for="(contactItemDown, index) in contactItemsDown" :key="index">{{contactItemDown}}</li>
                             </ul>
                         </div>
 
                         <div class="col-5 d-flex justify-content-around my-auto">
                             
-                                <a v-for="(link, index) in links" :key="index" :href="link.link">
+                                <a v-for="(link, index) in links" :key="index" :href="link.link" target="blank">
                                     <div class="circle">
                                         <img :src="'/static/footer/'+ link.image" alt="">
                                     </div>

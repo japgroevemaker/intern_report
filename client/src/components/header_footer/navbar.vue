@@ -16,21 +16,21 @@
 
         <transition name="nav-menu">
             <div class="container-fluid nav-container position-fixed" v-if="visible">
-                <h3 class="position-absolute -close"  @click="visible = !visible">sluit</h3>
+                <h3 class="position-absolute montserrat -close"  @click="visible = !visible">sluit</h3>
                 <div class="container">
                     <div class="row">
                         <div class="col-8 ml-3">
                             <ul class="nav flex-column" >
-                                <li class="nav-item mt-3" @click="visible = !visible"> 
+                                <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'home'}">home</router-link> 
                                 </li>
-                                <li class="nav-item mt-3" @click="visible = !visible"> 
+                                <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'inleiding', query: {name: 'inleiding'}}">inleiding</router-link> 
                                 </li>
-                                <li class="nav-item mt-3" @click="visible = !visible"> 
+                                <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'chapter', query: {name: 'Projecten'}}">projecten</router-link> 
                                 </li>
-                                <li class="nav-item mt-3" @click="visible = !visible"> 
+                                <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
                                     <router-link :to="{name: 'over-mij', query: {name: 'over mij'}}">over mij</router-link> 
                                 </li>
                             </ul>
@@ -40,7 +40,7 @@
                     <div class="row contact-items mt-5">
                         <div class="col-8 ml-3">
                             <ul class="pl-0">
-                                <li class="contact-item" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
+                                <li class="contact-item montserrat" v-for="(contactItemUp, index) in contactItemsUp" :key="index">{{contactItemUp}}</li>
                             </ul>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="row contact-items mt-2">
                         <div class="col-8 ml-3">
                             <ul class="pl-0">
-                                <li class="contact-item" v-for="(contactItemDown, index) in contactItemsDown" :key="index">{{contactItemDown}}</li>
+                                <li class="contact-item montserrat" v-for="(contactItemDown, index) in contactItemsDown" :key="index">{{contactItemDown}}</li>
                             </ul>
                         </div>
                     </div>

@@ -6,12 +6,11 @@
                 <p class="plain-text text-left mb-3 mb-md-5">
                     {{caption}}
                 </p>
-                <router-link :to="{ name: 'inleiding', query: { name: 'inleiding'}}"> <span class="read-more text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
+                <router-link :to="{ name: 'inleiding', query: { name: 'inleiding'}}"> <span class="read-more montserrat text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
             </div>
         </div>
         
         <div class="clearfix my-4 my-md-5"></div>
-
     
         </div>
             <tiny-slider ref="tinySlider" v-if="chapters" v-bind="sliderConfig">

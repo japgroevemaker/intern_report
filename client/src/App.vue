@@ -58,11 +58,11 @@ export default {
             width: 12px;
             height: 12px;
             background-color: #1C1C1E;
-            border-radius: 50%;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            border-radius: 50%;
-            -khtml-border-radius: 50%;
+            border-radius: 100%;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            -khtml-border-radius: 100%;
             transition: all .2s ease-in;
         }
 

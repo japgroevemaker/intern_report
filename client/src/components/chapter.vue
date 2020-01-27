@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="program-slider"  v-if="programming">
+        <div class="program-slider" v-if="programming">
             <tiny-slider ref="programSlider" v-if="programming" v-bind="programSlider" >
                 <div v-for="(type, index) in programming" :key="index">
                     <div class="programming-card pt-2 pb-md-3 px-4 px-md-5">
@@ -382,6 +382,7 @@ export default {
 
         .-image {
             width: 40px;
+            height: 40px;
         }
 
         .-title {
