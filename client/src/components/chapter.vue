@@ -116,7 +116,7 @@
                                 <h2 class="-title mt-n2">
                                     {{project.title}}   
                                 </h2>
-                                <p class="-to-chapter "> {{toProject}} <i class="fa fa-arrow-right ml-5"></i></p>
+                                <p class="-to-chapter montserrat"> {{toProject}} <i class="fa fa-arrow-right ml-5"></i></p>
                             </div>
                     </div>
                 </router-link>
@@ -251,7 +251,7 @@ export default {
                .then(response => {
                     const chapterData = response.data[0]
                    
-                    this.chapter = response.data
+                    // this.chapter = response.data
                     this.headerImage = chapterData.headerImage
                     this.titleCaption = chapterData.titleCaption
                     this.title = chapterData.title
@@ -266,7 +266,6 @@ export default {
 
                     if(chapterData.programming){
                         this.programming = chapterData.programming
-                        console.log('There is data')
                     }
 
                     if(chapterData.images){
@@ -412,11 +411,20 @@ export default {
         background-position: center;
         transition: all 0.2s;
 
+        i {
+            transition: all 0.2s;
+        }
+
         @include md {
             padding-bottom: 70%;
             &:hover {
                 transition: all 0.2s;
                 transform: translateY(-10px);
+
+                i {
+                    transition: all .2s;
+                    transform: translateX(10px)
+                }
             }
         }
 

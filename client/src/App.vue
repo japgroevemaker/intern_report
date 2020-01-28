@@ -38,6 +38,10 @@ export default {
     background-color: $black-color;
   }
 
+  .tns-slider {
+    padding-top: 10px;
+  }
+
     .tns-nav {
         margin: 20px auto;
         width: 30%;

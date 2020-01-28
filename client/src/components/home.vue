@@ -76,6 +76,10 @@ export default {
             edgePadding: 40,
             responsive: {
                 768: {
+                    items: 2.5,
+                    gutter: 30,
+                },
+                992: {
                     items: 3.6,
                     gutter: 30,
                 }
@@ -157,7 +161,6 @@ export default {
         }
     }
     
-
     .chapter-image {
         background-color: $pink-color;
         background-size: cover;
@@ -165,27 +168,45 @@ export default {
         padding-bottom: 170%;
         transition: all 0.2s;
 
+        i {
+            transition: all 0.2s;
+        }
+
         @include md {
             &:hover {
                 transition: all 0.2s;
                 transform: translateY(-10px);
+
+                i {
+                    transition: all .2s;
+                    transform: translateX(10px)
+                }
+
             }
         }
 
         // make title on home page smaller
         .-smaller {
             @include md {
+                font-size: 30px !important;
+            }
+
+            @include lg {
                 font-size: 50px !important;
             }
         }
 
         .-smaller-caption {
             @include md {
+                font-size: 15px !important;
+            }
+
+            @include lg {
                 font-size: 20px !important;
             }
         }
 
-        @include md {
+        @include lg {
             // width: 70%;
             margin: auto;
             padding-bottom: 100%;
