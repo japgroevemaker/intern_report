@@ -33,7 +33,7 @@ In tegenstelling tot Vue.js is ReactJS door een groot concern ontwikkeld en kan 
 
 De syntax van ReactJS vertoond veel vergelijkingen met die van Vue.js
 
-(voorbeeld)
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/Hello-World-React.png )
 
 ReactJS word net als Vue.js met een vrij simpele en basic library geleverd. Dit heeft als voordeel dat je vrij bent om verschillende packages in je ReactJS app te injecteren zodat je je ReactJS app naar je eigen voorwaarden kan kneden. Hierdoor is ReactJS, net als Vue.js, ook klein van formaat.
 
