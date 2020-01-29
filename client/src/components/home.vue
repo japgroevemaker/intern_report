@@ -70,7 +70,6 @@ export default {
             loop: false,
             navPosition: 'bottom',
             controls: false,
-            // swipeAngle: 45,
             items: 1.5,
             gutter: 20,
             edgePadding: 40,
@@ -116,7 +115,6 @@ export default {
 </script>
 
 <style lang="scss">
-    // @import 'tiny-slider/src/tiny-slider';
 
     .onload-enter {
         opacity: 0;
@@ -191,7 +189,7 @@ export default {
                 font-size: 30px !important;
             }
 
-            @include lg {
+            @include xl {
                 font-size: 50px !important;
             }
         }
@@ -201,12 +199,12 @@ export default {
                 font-size: 15px !important;
             }
 
-            @include lg {
+            @include xl {
                 font-size: 20px !important;
             }
         }
 
-        @include lg {
+        @include xl {
             // width: 70%;
             margin: auto;
             padding-bottom: 100%;

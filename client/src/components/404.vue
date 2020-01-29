@@ -2,11 +2,13 @@
     <div>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-10 mx-auto not-found">
+                <div class="col-10 text-center mx-auto not-found">
                     <div class="gif" :style="'background-image: url('+ gif +')'"></div>
-                    <p class="plain-text text-center">
+                    <p class="plain-text text-center mb-5 mb-lg-2">
                         De pagina waar je naar zoekt bestaat niet. Doei.
                     </p>
+
+                    <router-link :to="{name: 'home'}"> <span class="back-home montserrat"> terug naar home <i class="fa fa-arrow-right ml-5"></i> </span></router-link>
                 </div>
             </div>
         </div>
@@ -51,6 +53,25 @@ export default {
             // background-size: 100%;
             background-position: top;
             padding-bottom: 70%;
+        }
+    }
+
+    .back-home {
+        color: $pink-color;
+        font-weight: $fw-bold;
+        margin: auto;
+
+        i {
+            transition: all .2s;
+        }
+
+        @include md {
+            &:hover {
+                i {
+                    transition: all .2s;
+                    transform: translateX(10px)
+                }
+            }
         }
     }
 </style>

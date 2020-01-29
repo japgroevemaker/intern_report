@@ -122,6 +122,12 @@
             }
         },
 
+        beforeCreate() {
+         if(this.$route.query.name == undefined) {
+            this.$router.push({name: '404'})
+            }
+        },
+
         created(){
             this.fetchProjectData(this.$route.query.name)
             this.backToTop()
@@ -136,6 +142,10 @@
                 PageService.getProject(projectId)
                     .then(response => {
                         const project = response.data[0]
+
+                        if(project == undefined) {
+                       this.$router.push({name: '404'})
+                   }
                         this.projectAll = response.data
 
                         this.headerImage = project.headerImage

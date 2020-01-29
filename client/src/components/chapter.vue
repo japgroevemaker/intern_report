@@ -25,7 +25,8 @@
                 </div>
 
                 <div class="col-10 mx-auto mt-5" v-if="text[0]">
-                    <h3 class="text-heading mb-n1">{{text[0].heading}}</h3>
+                    <div class="heading-image mb-4" v-if="text[0].image" :style="'background-image: url(/static/chapters/'+ text[0].image + ')'"></div>
+                    <h3 class="text-heading open-sans mb-n1">{{text[0].heading}}</h3>
                     <p class="plain-text">
                         {{text[0].text}}
                     </p>
@@ -44,7 +45,8 @@
         <div class="container">    
             <div class="row" v-if="text[1]">
                 <div class="col-10 mx-auto mt-2 mb-5">
-                    <h3 class="text-heading mb-n1" >{{text[1].heading}}</h3>
+                    <div class="heading-image mb-4" v-if="text[1].image" :style="'background-image: url(/static/chapters/'+ text[1].image + ')'"></div>
+                    <h3 class="text-heading open-sans mb-n1" >{{text[1].heading}}</h3>
                     <p class="plain-text">
                         {{text[1].text}}
                     </p>
@@ -56,16 +58,26 @@
 
             <div class="row" v-if="text[2]">
                 <div class="col-10 mx-auto mt-2 mb-5">
-                    <h3 class="text-heading mb-n1">{{text[2].heading}}</h3>
+                    <div class="heading-image mb-4" v-if="text[2].image" :style="'background-image: url(/static/chapters/'+ text[2].image + ')'"></div>
+                    <h3 class="text-heading open-sans mb-n1">{{text[2].heading}}</h3>
                     <p class="plain-text">
                         {{text[2].text}}
                     </p>
                 </div>
             </div>
 
+            <div class="row" v-if="interview">
+                <div class="col-10 mx-auto mt-2 mb-5" v-for="(piece, index) in interview" :key="index">
+                    <h3 class="text-heading open-sans mb-n1">{{piece.question}}</h3>
+                    <p class="plain-text mb-2">
+                        {{piece.answer}}
+                    </p>
+                </div>
+            </div>
+
             <div class="row" v-if="text[3]">
                 <div class="col-10 mx-auto mt-2 mb-5">
-                    <h3 class="text-heading mb-n1">{{text[3].heading}}</h3>
+                    <h3 class="text-heading open-sans mb-n1">{{text[3].heading}}</h3>
                     <p class="plain-text">
                         {{text[3].text}}
                     </p>
@@ -74,7 +86,7 @@
 
             <div class="row" v-if="goals">
                 <div class="col-10 mx-auto mt-2 mb-5"  v-for="(goal, index) in goals" :key="index">
-                    <h3 class="text-heading">{{goal.title}}</h3>
+                    <h3 class="text-heading open-sans">{{goal.title}}</h3>
                     <div class="d-flex mb-4">
                         <div class="circle mr-5">
                             <img src="/static/chapters/icons/check-solid.svg" alt="">
@@ -98,7 +110,7 @@
                     <div class="programming-card pt-2 pb-md-3 px-4 px-md-5">
                         <div class="d-flex flex-row w-75 my-4 mx-auto">
                             <img class="-image mr-3" :src="'/static/chapters/icons/'+ type.image" alt="">
-                            <h4 class="-title">{{type.title}}</h4>
+                            <h4 class="-title ">{{type.title}}</h4>
                         </div>
                         <p class="plain-text">
                             {{type.text}}
@@ -163,7 +175,7 @@ export default {
             next: 'volgende',
             back: 'terug',
             toProject: 'naar project',
-            chapter: null,
+            interview: null,
             projects: null,
             sliderConfig: {},
             programSlider: {}
@@ -175,7 +187,6 @@ export default {
     },
 
     beforeCreate() {
-        
          if(this.$route.query.name == undefined) {
             this.$router.push({name: '404'})
         }
@@ -187,8 +198,6 @@ export default {
     },
 
  mounted() {
-
-        this.adjustImage()
 
         this.title = {
           title: this.title
@@ -236,22 +245,15 @@ export default {
             window.scrollTo(0, 0);
         },
 
-        adjustImage(){
-            let headerImage = document.querySelector('.header-image');
-
-            if(this.$route.query.name == 'Begeleider'){
-            headerImage.classList.add('-adjust')
-            } else {
-                headerImage.classList.remove('-adjust')
-            }
-        },
 
         fetchChapterData(chapterId) {
             PageService.getChapters(chapterId)
                .then(response => {
                     const chapterData = response.data[0]
-                   
-                    // this.chapter = response.data
+                   if(chapterData == undefined) {
+                       this.$router.push({name: '404'})
+                   }
+
                     this.headerImage = chapterData.headerImage
                     this.titleCaption = chapterData.titleCaption
                     this.title = chapterData.title
@@ -278,6 +280,10 @@ export default {
 
                     if(chapterData.goals) {
                         this.goals = chapterData.goals
+                    }
+
+                     if(chapterData.interview) {
+                        this.interview = chapterData.interview
                     }
 
                 }).catch(error => {
@@ -363,6 +369,17 @@ export default {
 
     hr {
         background-color: $grey-color;
+    }
+
+    .heading-image {
+        padding-bottom: 100%;
+        background-size: cover;
+        background-position: center;
+
+        @include lg {
+            padding-bottom: 60%;
+            background-position: top;
+        }
     }
 
     .slider-image {
