@@ -157,7 +157,7 @@ import VueTinySlider from 'vue-tiny-slider';
 
 export default {
     title(){
-        return `intern report - chapter ${this.title}`
+        return `intern report - chapter ${this.pagetitle}`
     },
 
     data() {
@@ -165,6 +165,7 @@ export default {
             headerImage: '',
             titleCaption: '',
             title: '',
+            pagetitle: '',
             caption: '',
             text: [],
             images: null,
@@ -195,13 +196,10 @@ export default {
     created() {
         this.fetchChapterData(this.$route.query.name)
         this.backToTop()
+        
     },
 
  mounted() {
-
-        this.title = {
-          title: this.title
-        },
 
         this.sliderConfig = {
             center: true,
@@ -244,7 +242,6 @@ export default {
         backToTop(){
             window.scrollTo(0, 0);
         },
-
 
         fetchChapterData(chapterId) {
             PageService.getChapters(chapterId)
@@ -291,7 +288,17 @@ export default {
              })
          },
     },
+
+    watch: {
+        title(newValue, oldValue){
+            console.log(`New value is ${newValue}`)
+            console.log(`old value is ${oldValue}`)
+
+            return this.pagetitle = newValue
+        }
+    },
 }
+
 </script>
 
 <style scoped lang="scss">
