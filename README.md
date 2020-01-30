@@ -156,7 +156,7 @@ Omdat Plesk niet standaard MongoDB ondersteunt, moet je deze via Docker installe
 
 * __Docker image MongoDB configureren__ <br>
 Daarna, als je de image geinstalleerd heb, moet je hem nog even configureren en ervoor zorgen dat hij ook daadwerkelijk met de juiste Database praat.
-![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/docker.png)
+![docker](https://github.com/japgroevemaker/intern_report/raw/master/image/docker.png)
 
 * __Proxy regel toevoegen__ <br>
 Als allerlaatst is het zaak een proxy regel toe te voegen voor je domein. Een proxyserver is een server die zich bevindt tussen de computer van een gebruiker en de computer waarop de door de gebruiker gewenste informatie staat. Wil iemand op een computer waarop een proxyserver is ingesteld een andere computer bereiken, dan gebeurt dit niet rechtstreeks, maar via deze proxyserver.
