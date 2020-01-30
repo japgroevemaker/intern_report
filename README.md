@@ -138,26 +138,26 @@ Vervolgens is het tijd om de server te gaan configureren. Om mijn server beheer 
 
 * __Domein aanmaken__ <br>
 Als eerst is het zaak dat je een domein op je server aanmaakt. Het aanmaken van een domein creert als het waren een eigen afgeschermd stukje op je server waar de bestanden opgeslagen staan. Hier creer je ook een acount waarmee je via FTP toegang tot de bestanden kan krijgen.
-![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/domain.png)
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/domain.PNG)
 
 * __SSL certificaat toevoegen__ <br>
 Een SSL certificaat is een bestand dat zorgt voor een betere beveiliging van gegevens tussen de server (van jouw website) en een internet browser (zoals Chrome of Internet Explorer). SSL staat letterlijk voor Secure Sockets Layer wat betekent dat er een beveiligde laag geplaatst wordt tussen een server en een internet browser waardoor de gegevens beveiligd worden. Dit doe ik met Let's encrypt, een extentie die ik in Plesk geinstalleerd heb.
 
 * __Koppelen met GitHub repo__ <br>
 Je kan je bestanden natuurlijk handmatig via FTP aan je server toevoegen, maar dat is iedere keer veel werk. In plesk kan je ook een Git extentie installeren die een koppeling maakt met een GitHub repo vanwaar uit je de bestanden kan binnenhalen.
-![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/github.png)
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/github.PNG)
 
 * __Nodejs toepassing aanzetten voor domein__ <br>
 Plesk heeft een Nodejs extentie die ervoor zorgt dat je Nodejs applicaties op je server kan draaien. Dit is een makkelijk te gebruiken extentie, je moet hem nog wel even configureren. Als je dat gedaan hebt, heb je binnen no-time een Nodejs app draaien op je server.
-![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/nodejs.png)
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/nodejs.PNG)
 
 * __MongoDB via Docker installeren__ <br>
 Omdat Plesk niet standaard MongoDB ondersteunt, moet je deze via Docker installeren. Docker is kort gezegd een open-source framework waarmee het mogelijk wordt een applicatie in een lichtgewicht, verplaatsbare container te verpakken. Deze containers worden ook wel een image genoemd. Zo wordt het installeren van een applicatie op een server even eenvoudig als het installeren van een mobiele app op je tablet of smartphone.
 
 * __Docker image MongoDB configureren__ <br>
 Daarna, als je de image geinstalleerd heb, moet je hem nog even configureren en ervoor zorgen dat hij ook daadwerkelijk met de juiste Database praat.
-![docker](https://github.com/japgroevemaker/intern_report/raw/master/image/docker.png)
+![docker](https://github.com/japgroevemaker/intern_report/raw/master/image/docker.PNG)
 
 * __Proxy regel toevoegen__ <br>
 Als allerlaatst is het zaak een proxy regel toe te voegen voor je domein. Een proxyserver is een server die zich bevindt tussen de computer van een gebruiker en de computer waarop de door de gebruiker gewenste informatie staat. Wil iemand op een computer waarop een proxyserver is ingesteld een andere computer bereiken, dan gebeurt dit niet rechtstreeks, maar via deze proxyserver.
-![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/proxy.png)
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/proxy.PNG)
