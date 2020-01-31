@@ -32,8 +32,11 @@ ReactJS maakt gebruik van de virtuele DOM(document object model). ReactJS heeft 
 In tegenstelling tot Vue.js is ReactJS door een groot concern ontwikkeld en kan er daarom veel geld in de ontwikkeling van het framework gestoken worden. Als het gaat om het daadwerkelijk gebruiken van ReactJS ten opzichte van Vue.js dan leert de praktijk dat je meer regels code met ReactJS nodig hebt om hetzelfde te bereiken dan als je dat in Vue.js doet. 
 
 De syntax van ReactJS vertoond veel vergelijkingen met die van Vue.js
-
+Hello world in React:
 ![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/Hello-World-React.png )
+
+Hello world in Vue
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/Hello-World-vue.png )
 
 ReactJS word net als Vue.js met een vrij simpele en basic library geleverd. Dit heeft als voordeel dat je vrij bent om verschillende packages in je ReactJS app te injecteren zodat je je ReactJS app naar je eigen voorwaarden kan kneden. Hierdoor is ReactJS, net als Vue.js, ook klein van formaat.
 
