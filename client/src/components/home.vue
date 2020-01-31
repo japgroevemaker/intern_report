@@ -190,7 +190,7 @@ export default {
             }
 
             @include xl {
-                font-size: 50px !important;
+                font-size: 40px !important;
             }
         }
 
@@ -199,9 +199,9 @@ export default {
                 font-size: 15px !important;
             }
 
-            @include xl {
-                font-size: 20px !important;
-            }
+            // @include xl {
+            //     font-size: 20px !important;
+            // }
         }
 
         @include xl {

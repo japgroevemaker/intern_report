@@ -203,7 +203,7 @@ export default {
 
         this.sliderConfig = {
             center: true,
-            mouseDrag: true,
+            // mouseDrag: true,
             touch: true,
             loop: false,
             navPosition: 'bottom',
@@ -215,6 +215,10 @@ export default {
             responsive: {
                 768: {
                     items: 2,
+                },
+                992: {
+                    items: 3.5,
+                    gutter: 40
                 }
             }
         },
@@ -233,6 +237,13 @@ export default {
                 768: {
                     items: 3.2,
                     nav: false
+                },
+                992: {
+                    items: 2,
+                    center: false
+                },
+                1200: {
+                    items: 3
                 }
             }
         }
@@ -279,7 +290,7 @@ export default {
                         this.goals = chapterData.goals
                     }
 
-                     if(chapterData.interview) {
+                    if(chapterData.interview) {
                         this.interview = chapterData.interview
                     }
 
@@ -440,7 +451,7 @@ export default {
         }
 
         @include md {
-            padding-bottom: 70%;
+            padding-bottom: 100%;
             &:hover {
                 transition: all 0.2s;
                 transform: translateY(-10px);
