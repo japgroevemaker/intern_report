@@ -122,7 +122,7 @@
 
         <tiny-slider ref="projectSlider" v-if="projects" v-bind="sliderConfig" >
             <div v-for="(project, index) in projects" :key="index">
-                <router-link :to="{name: 'project', query: { name: project.title } }">
+                <router-link :to="{name: 'project', params: { project: project.title } }">
                     <div class="project-image position-relative" :style="'background-image: url(/static/projects/' + project.image + ')'">
                         <div class="-box position-absolute">
                                 <h2 class="-title mt-n2">
@@ -138,10 +138,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 d-flex justify-content-between mx-auto">
-                    <router-link :to="{name: 'chapter', query: { name: prevLink } }">
+                    <router-link :to="{name: 'chapter', params: { chapter: prevLink } }">
                         <p class="-to-chapter my-4 montserrat"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
                     </router-link>
-                    <router-link  :to="{name: 'chapter', query: { name: nextLink } }" >
+                    <router-link  :to="{name: 'chapter', params: { chapter: nextLink } }" >
                         <p class="-to-chapter my-4 montserrat"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
                     </router-link>
 
@@ -188,22 +188,21 @@ export default {
     },
 
     beforeCreate() {
-         if(this.$route.query.name == undefined) {
+         if(this.$route.params.chapter == undefined) {
             this.$router.push({name: '404'})
         }
     },
 
     created() {
-        this.fetchChapterData(this.$route.query.name)
+        this.fetchChapterData(this.$route.params.chapter)
         this.backToTop()
-        
     },
 
  mounted() {
 
         this.sliderConfig = {
             center: true,
-            // mouseDrag: true,
+            mouseDrag: true,
             touch: true,
             loop: false,
             navPosition: 'bottom',
@@ -298,15 +297,6 @@ export default {
                     this.message = error
              })
          },
-    },
-
-    watch: {
-        title(newValue, oldValue){
-            console.log(`New value is ${newValue}`)
-            console.log(`old value is ${oldValue}`)
-
-            return this.pagetitle = newValue
-        }
     },
 }
 

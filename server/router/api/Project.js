@@ -22,6 +22,7 @@ async function loadProjects(){
     useNewUrlParser: true,                        
     useUnifiedTopology: true
   });
+ 
   return client.db('intern_report').collection('projects')
 }
 

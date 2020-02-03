@@ -25,22 +25,23 @@ const router = new VueRouter({
       // meta: { transition: 'fade-in-up' },
     },
     {
-      path: '/chapter/',
+      path: '/:chapter',
+      props: true,
       name: 'chapter',
       component: () => import('./components/chapter.vue')
     },
     {
-      path: '/page/',
+      path: '/:page',
       name: 'inleiding',
       component: () => import('./components/page.vue')
     },
     {
-      path: '/page/',
+      path: '/:page',
       name: 'over-mij',
       component: () => import('./components/page.vue')
     },
     {
-      path: '/project/',
+      path: '/:project',
       name: 'project',
       component: () => import('./components/project.vue')
     },

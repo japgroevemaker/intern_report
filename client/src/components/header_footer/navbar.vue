@@ -25,13 +25,13 @@
                                     <router-link :to="{name: 'home'}">home</router-link> 
                                 </li>
                                 <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
-                                    <router-link :to="{name: 'inleiding', query: {name: 'inleiding'}}">inleiding</router-link> 
+                                    <router-link :to="{name: 'inleiding', params: {page: 'inleiding'}}">inleiding</router-link> 
                                 </li>
                                 <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
-                                    <router-link :to="{name: 'chapter', query: {name: 'Projecten'}}">projecten</router-link> 
+                                    <router-link :to="{name: 'chapter', params: {chapter: 'Projecten'}}">projecten</router-link> 
                                 </li>
                                 <li class="nav-item montserrat mt-3" @click="visible = !visible"> 
-                                    <router-link :to="{name: 'over-mij', query: {name: 'over mij'}}">over mij</router-link> 
+                                    <router-link :to="{name: 'over-mij', params: {page: 'over mij'}}">over mij</router-link> 
                                 </li>
                             </ul>
                         </div>

@@ -3,7 +3,7 @@
     <navBar/>
       <div class="clearfix py-4"></div>
       <vue-page-transition name="overlay-right-full">
-        <router-view :key="$route.query.name"/>
+        <router-view :key="$route.params.page"/>
       </vue-page-transition>
     <div class="clearfix py-4"></div>
     <Footer/>
