@@ -50,6 +50,7 @@ $line-height: 35px !important;
 }
 
 @mixin _text-header {
+    font-family: $open-sans;
     color: $pink-color;
     font-size: 18px;
     font-weight: $fw-bold;
