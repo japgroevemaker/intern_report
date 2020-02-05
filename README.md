@@ -32,8 +32,11 @@ ReactJS maakt gebruik van de virtuele DOM(document object model). ReactJS heeft 
 In tegenstelling tot Vue.js is ReactJS door een groot concern ontwikkeld en kan er daarom veel geld in de ontwikkeling van het framework gestoken worden. Als het gaat om het daadwerkelijk gebruiken van ReactJS ten opzichte van Vue.js dan leert de praktijk dat je meer regels code met ReactJS nodig hebt om hetzelfde te bereiken dan als je dat in Vue.js doet. 
 
 De syntax van ReactJS vertoond veel vergelijkingen met die van Vue.js
-
+Hello world in React:
 ![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/Hello-World-React.png )
+
+Hello world in Vue
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/Hello-World-vue.png )
 
 ReactJS word net als Vue.js met een vrij simpele en basic library geleverd. Dit heeft als voordeel dat je vrij bent om verschillende packages in je ReactJS app te injecteren zodat je je ReactJS app naar je eigen voorwaarden kan kneden. Hierdoor is ReactJS, net als Vue.js, ook klein van formaat.
 
@@ -111,3 +114,53 @@ En je router werkt. Toen dit opgezet was, kon ik verder met het inrichten en bou
 
 Ik heb tijdens het bouwen gebruik gemaakt van Bootstrap, dit omdat dit een hoop code schrijven scheelt. Daarnaast heb ik gebruik gemaakt van SASS. SASS heb ik gebruikt omdat ik het fijn vind dat je kan nesten, dit houd het lekker overzichtelijk. In mijn stage verslag onder het kopje functie ga ik dieper in op deze frameworks.  
 
+## Op server zetten
+En dan? Hoe gaat het verder als je klaar bent met ontwikkelen? Hieronder leg ik stapsgewijs uit hoe ik mij app op mijn eigen server gezet heb.
+
+* __Vue app builden__ <br>
+Als je dan eenmaal klaar bent met ontwikkelen, moet je je Vue app nog omzetten in voor de browser leesbare code. Dit doe je door `npm run build` in de commandline in te voeren. De app wordt dan omgezet naar `html`, `CSS` en `Javascript` en komt in een `dist` folder terrecht. Vervolgens moet je de `dist` hernoemen naar `public` en de map verplaatsen naar de map waar de server draait. 
+
+* __View aangeven in `index.js`__ <br>
+Vervolgens moet je de server aangeven waar hij zijn `view` vandaan moet halen. Je geeft aan waar de static folder zich bevind en zegt welk bestand hij naar de browser moet sturen. Dit doe je op deze manier:
+```javascript
+    //handle production
+if(process.env.NODE_ENV ===  'production') {
+    //static folder
+    app.use(express.static(__dirname + '/public/index.html'));
+
+    //handle SPA
+    app.get(/.*/, function(req, res){
+        res.sendFile(__dirname + '/public/index.html');
+    })
+}
+```
+### Server
+
+* __Plesk__ <br>
+Vervolgens is het tijd om de server te gaan configureren. Om mijn server beheer te vergemakkelijken gebruik ik plesk. Een graphical user interface om je server te configureren.
+
+* __Domein aanmaken__ <br>
+Als eerst is het zaak dat je een domein op je server aanmaakt. Het aanmaken van een domein creert als het waren een eigen afgeschermd stukje op je server waar de bestanden opgeslagen staan. Hier creer je ook een acount waarmee je via FTP toegang tot de bestanden kan krijgen.
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/domain.PNG)
+
+* __SSL certificaat toevoegen__ <br>
+Een SSL certificaat is een bestand dat zorgt voor een betere beveiliging van gegevens tussen de server (van jouw website) en een internet browser (zoals Chrome of Internet Explorer). SSL staat letterlijk voor Secure Sockets Layer wat betekent dat er een beveiligde laag geplaatst wordt tussen een server en een internet browser waardoor de gegevens beveiligd worden. Dit doe ik met Let's encrypt, een extentie die ik in Plesk geinstalleerd heb.
+
+* __Koppelen met GitHub repo__ <br>
+Je kan je bestanden natuurlijk handmatig via FTP aan je server toevoegen, maar dat is iedere keer veel werk. In plesk kan je ook een Git extentie installeren die een koppeling maakt met een GitHub repo vanwaar uit je de bestanden kan binnenhalen.
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/github.PNG)
+
+* __Nodejs toepassing aanzetten voor domein__ <br>
+Plesk heeft een Nodejs extentie die ervoor zorgt dat je Nodejs applicaties op je server kan draaien. Dit is een makkelijk te gebruiken extentie, je moet hem nog wel even configureren. Als je dat gedaan hebt, heb je binnen no-time een Nodejs app draaien op je server.
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/nodejs.PNG)
+
+* __MongoDB via Docker installeren__ <br>
+Omdat Plesk niet standaard MongoDB ondersteunt, moet je deze via Docker installeren. Docker is kort gezegd een open-source framework waarmee het mogelijk wordt een applicatie in een lichtgewicht, verplaatsbare container te verpakken. Deze containers worden ook wel een image genoemd. Zo wordt het installeren van een applicatie op een server even eenvoudig als het installeren van een mobiele app op je tablet of smartphone.
+
+* __Docker image MongoDB configureren__ <br>
+Daarna, als je de image geinstalleerd heb, moet je hem nog even configureren en ervoor zorgen dat hij ook daadwerkelijk met de juiste Database praat.
+![docker](https://github.com/japgroevemaker/intern_report/raw/master/image/docker.PNG)
+
+* __Proxy regel toevoegen__ <br>
+Als allerlaatst is het zaak een proxy regel toe te voegen voor je domein. Een proxyserver is een server die zich bevindt tussen de computer van een gebruiker en de computer waarop de door de gebruiker gewenste informatie staat. Wil iemand op een computer waarop een proxyserver is ingesteld een andere computer bereiken, dan gebeurt dit niet rechtstreeks, maar via deze proxyserver.
+![voorbeeld](https://github.com/japgroevemaker/intern_report/raw/master/image/proxy.PNG)

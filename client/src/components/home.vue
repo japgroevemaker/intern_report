@@ -6,7 +6,7 @@
                 <p class="plain-text text-left mb-3 mb-md-5">
                     {{caption}}
                 </p>
-                <router-link :to="{ name: 'inleiding', query: { name: 'inleiding'}}"> <span class="read-more montserrat text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
+                <router-link :to="{ name: 'inleiding', params: { page: 'inleiding'}}"> <span class="read-more montserrat text-center"> {{readMore}} <i class="fa fa-arrow-right ml-5"></i> </span> </router-link>
             </div>
         </div>
         
@@ -15,7 +15,7 @@
         </div>
             <tiny-slider ref="tinySlider" v-if="chapters" v-bind="sliderConfig">
                 <div v-for="(chapter, index) in chapters" :key="index">
-                    <router-link :to="{name: 'chapter', query: { name: chapter.title } }">
+                    <router-link :to="{name: 'chapter', params: { chapter: chapter.title } }">
                     <div class="chapter-image position-relative" :style="{'background-image': 'url(./static/chapters/' + chapter.image + ')'}">
                         <div class="-box position-absolute">
                             <h4 class="-title-caption -smaller-caption ml-4">
@@ -190,7 +190,7 @@ export default {
             }
 
             @include xl {
-                font-size: 50px !important;
+                font-size: 40px !important;
             }
         }
 
@@ -199,9 +199,9 @@ export default {
                 font-size: 15px !important;
             }
 
-            @include xl {
-                font-size: 20px !important;
-            }
+            // @include xl {
+            //     font-size: 20px !important;
+            // }
         }
 
         @include xl {

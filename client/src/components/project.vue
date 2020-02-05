@@ -123,13 +123,13 @@
         },
 
         beforeCreate() {
-         if(this.$route.query.name == undefined) {
+         if(this.$route.params.project == undefined) {
             this.$router.push({name: '404'})
             }
         },
 
         created(){
-            this.fetchProjectData(this.$route.query.name)
+            this.fetchProjectData(this.$route.params.project)
             this.backToTop()
         },
  

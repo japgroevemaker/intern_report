@@ -76,17 +76,17 @@ export default {
     },
 
     created() {
-        this.fetchPageData(this.$route.query.name)
+        this.fetchPageData(this.$route.params.page)
         this.changeBackground()
 
-        if(this.$route.query.name == 'over mij'){
+        if(this.$route.params.page == 'over mij'){
             this.getInsta()
         }
     },
 
     methods: {
         changeBackground(){
-            document.body.style = 'background-color: $pink-color;'
+            document.body.style = 'background-color: $pink-color !important;'
         },
 
         fetchPageData(pageId) {

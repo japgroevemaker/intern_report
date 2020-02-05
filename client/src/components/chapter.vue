@@ -122,7 +122,7 @@
 
         <tiny-slider ref="projectSlider" v-if="projects" v-bind="sliderConfig" >
             <div v-for="(project, index) in projects" :key="index">
-                <router-link :to="{name: 'project', query: { name: project.title } }">
+                <router-link :to="{name: 'project', params: { project: project.title } }">
                     <div class="project-image position-relative" :style="'background-image: url(/static/projects/' + project.image + ')'">
                         <div class="-box position-absolute">
                                 <h2 class="-title mt-n2">
@@ -138,10 +138,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 d-flex justify-content-between mx-auto">
-                    <router-link :to="{name: 'chapter', query: { name: prevLink } }">
+                    <router-link :to="{name: 'chapter', params: { chapter: prevLink } }">
                         <p class="-to-chapter my-4 montserrat"> <i class="fa fa-arrow-left mr-3"></i> {{back}}</p>
                     </router-link>
-                    <router-link  :to="{name: 'chapter', query: { name: nextLink } }" >
+                    <router-link  :to="{name: 'chapter', params: { chapter: nextLink } }" >
                         <p class="-to-chapter my-4 montserrat"> {{next}} <i class="fa fa-arrow-right ml-3"></i></p>
                     </router-link>
 
@@ -157,7 +157,7 @@ import VueTinySlider from 'vue-tiny-slider';
 
 export default {
     title(){
-        return `intern report - chapter ${this.title}`
+        return `intern report - chapter ${this.pagetitle}`
     },
 
     data() {
@@ -165,6 +165,7 @@ export default {
             headerImage: '',
             titleCaption: '',
             title: '',
+            pagetitle: '',
             caption: '',
             text: [],
             images: null,
@@ -187,21 +188,17 @@ export default {
     },
 
     beforeCreate() {
-         if(this.$route.query.name == undefined) {
+         if(this.$route.params.chapter == undefined) {
             this.$router.push({name: '404'})
         }
     },
 
     created() {
-        this.fetchChapterData(this.$route.query.name)
+        this.fetchChapterData(this.$route.params.chapter)
         this.backToTop()
     },
 
  mounted() {
-
-        this.title = {
-          title: this.title
-        },
 
         this.sliderConfig = {
             center: true,
@@ -217,6 +214,10 @@ export default {
             responsive: {
                 768: {
                     items: 2,
+                },
+                992: {
+                    items: 3.5,
+                    gutter: 40
                 }
             }
         },
@@ -235,6 +236,13 @@ export default {
                 768: {
                     items: 3.2,
                     nav: false
+                },
+                992: {
+                    items: 2,
+                    center: false
+                },
+                1200: {
+                    items: 3
                 }
             }
         }
@@ -244,7 +252,6 @@ export default {
         backToTop(){
             window.scrollTo(0, 0);
         },
-
 
         fetchChapterData(chapterId) {
             PageService.getChapters(chapterId)
@@ -282,7 +289,7 @@ export default {
                         this.goals = chapterData.goals
                     }
 
-                     if(chapterData.interview) {
+                    if(chapterData.interview) {
                         this.interview = chapterData.interview
                     }
 
@@ -292,6 +299,7 @@ export default {
          },
     },
 }
+
 </script>
 
 <style scoped lang="scss">
@@ -433,7 +441,7 @@ export default {
         }
 
         @include md {
-            padding-bottom: 70%;
+            padding-bottom: 100%;
             &:hover {
                 transition: all 0.2s;
                 transform: translateY(-10px);
